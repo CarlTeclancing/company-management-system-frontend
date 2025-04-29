@@ -32,8 +32,9 @@ function App() {
   ];
 
   return (
-    <div>
+    <div className='container'>
       <Button value={"Sign in"} type={"btn-primary"} />
+      <Button value={"Sign in"} type={"btn-primary-100"} />
       <AddButton value={"Add Widget"} type={"btn-secondary"} />
       <Widget title={"Task"} value={"12"} valueUp={12} message={'uncompleted task'} />
       <FinancialOverview />
