@@ -1,0 +1,105 @@
+/* Button.jsx and AddButton.jsx */
+
+.btn-primary{
+    background-color: var(--primary-color);
+    padding: 0px 60px;
+    height: 58px;
+    color: var(--bg-white);
+    font-size: 16px;
+    border-radius: 6px;
+    width: auto;
+    border: none;
+    margin: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.btn-primary:hover{
+    background-color: var(--primary-color-hover);
+    padding: 0px 60px;
+    height: 58px;
+    color: var(--bg-white);
+    font-size: 16px;
+    border-radius: 6px;
+    width: auto;
+    border: none;
+    margin: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+.btn-secondary{
+    border:2px solid var(--primary-color);
+    background-color: none;
+    background: none;
+    padding: 0px 60px;
+    height: 58px;
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    width: auto;
+    margin: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.btn-secondary:hover{
+    border:2px solid var(--primary-color-hover);
+    padding: 0px 60px;
+    height: 58px;
+    color: var(--primary-color-hover);
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    width: auto;
+    margin: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+/* widjet.jsx and  */
+
+.widget{
+    width: 310px;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.widget-row, .widget-footer{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.widget-footer{
+    color: var(--primary-color);
+    font-weight: 700;
+    cursor: pointer;
+}
+.widget span{
+    background-color: none;
+    border: 1px solid var(--primary-color);
+    color: var(--bg-white);
+    color: var(--primary-color);
+    width: 60px;
+    text-align: center;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.widget p{
+    font-size: 12px;
+}
