@@ -10,13 +10,44 @@
   }
   
   .input-field input {
-    padding: 0.5rem;
+    height: 40px;
+    padding: 0.4rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
   }
   
   .input-field input.error {
+    border-color: red;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  .dropdown-field {
+    display: flex;
+    width: 48%;
+    margin-top: 12px;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .dropdown-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .dropdown-field select {
+    height: 52px;
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .dropdown-field select.error {
     border-color: red;
   }
   

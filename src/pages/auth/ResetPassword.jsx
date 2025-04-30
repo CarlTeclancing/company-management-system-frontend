@@ -21,7 +21,7 @@ const ResetPassword = () => {
             <h2>Login</h2>
             <p>Enter your credentials to access your account</p>
             
-
+            <div className="form-el-100">
                 <InputField
                       label="Email"
                       name="email"
@@ -31,14 +31,15 @@ const ResetPassword = () => {
                       placeholder="Enter your email"
                       error={errors.email}
                 
-                />     
+                />    
+            </div> 
 
         {/* Submit button, etc. */}
         <hr />
         <Button value={"Send Reset Link"} type={"btn-primary-100"} />
         <hr />
 
-        <Link className='m-10' to={"/forgot-password"}>
+        <Link className='m-10' to={"/login"}>
             Back to Login
         </Link>
 

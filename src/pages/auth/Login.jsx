@@ -20,7 +20,7 @@ const Login = () => {
             <img src={logo} alt="logo" />
             <h2>Login</h2>
             <p>Enter your credentials to access your account</p>
-            <div className="form-el-100">
+            <div className="form-el-200">
 
                 <InputField
                       label="Email"
