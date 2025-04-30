@@ -13,10 +13,31 @@ const Login = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Perform validation and submission logic here
+    const newErrors = {};
+
+    if (!form.email) {
+      newErrors.email = 'Email is required';
+    }
+
+    if (!form.password) {
+      newErrors.password = 'Password is required';
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      // Submit the form
+      console.log('Form submitted:', form);
+    }
+  }
+
   return (
     <div className="form-container">
 
-        <form className='form'>
+        <form className='form' action='' onSubmit={handleSubmit}>
             <img src={logo} alt="logo" />
             <h2>Login</h2>
             <p>Enter your credentials to access your account</p>

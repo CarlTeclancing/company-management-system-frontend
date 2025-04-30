@@ -18,7 +18,7 @@
   }
   
   .input-field input.error {
-    border-color: red;
+    border-color: grey;
   }
   
   .error-message {
@@ -48,7 +48,7 @@
   }
   
   .dropdown-field select.error {
-    border-color: red;
+    border-color: grey;
   }
   
   .error-message {

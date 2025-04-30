@@ -21,4 +21,6 @@ body{
   font-family: "Poppins", sans-serif;
   font-style: normal;
   height: auto;
+  margin: 0;
+  padding: 0;
 }
