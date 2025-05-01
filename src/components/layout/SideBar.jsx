@@ -15,9 +15,14 @@ function SideBar() {
         <Link className="side-link-active" to={'/'}>
             <span>Dashbaord</span>
         </Link>
+        <span className="m-100">USer Management</span>
         <Link className="side-link" to={'/'}>
             <span>Users</span>
         </Link>
+        <Link className="side-link" to={'/'}>
+            <span>Clients</span>
+        </Link>
+        <span className="m-100">Project Management</span>
         <Link className="side-link" to={'/'}>
             <span>Projects</span>
         </Link>
@@ -30,6 +35,7 @@ function SideBar() {
         <Link className="side-link" to={'/'}>
             <span>Messages</span>
         </Link>
+        <span className="m-100">Other Management</span>
         <Link className="side-link" to={'/'}>
             <span>Inventory</span>
         </Link>
@@ -46,6 +52,7 @@ function SideBar() {
         <hr />
         <hr />
         <hr />
+        <span className="m-100">Settings & Support</span>
         <Link className="side-link" to={'/'}>
             <span>Settings</span>
         </Link>
