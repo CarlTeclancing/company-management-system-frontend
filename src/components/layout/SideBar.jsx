@@ -37,6 +37,9 @@ function SideBar() {
         </Link>
         <span className="m-100">Other Management</span>
         <Link className="side-link" to={'/'}>
+            <span>Invoices</span>
+        </Link>
+        <Link className="side-link" to={'/'}>
             <span>Inventory</span>
         </Link>
         <Link className="side-link" to={'/'}>
