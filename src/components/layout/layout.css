@@ -114,3 +114,34 @@
 .w-50{
     width: 50%;
 }
+.global-tab{
+    padding: 24px 32px;
+    width: auto;
+    background-color: var(--bg-tab);
+    border-radius: 12px;
+}
+.active-tab{
+    background-color: var(--bg-white);
+    color: var(--primary-color);
+    padding: 16px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition-duration: 0.3s;
+    transition-delay: 0.1s;
+    cursor: pointer;
+}
+.in-active-tab{
+    background-color: none;
+    background: none;
+    color: var(--primary-color);
+    padding: 16px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition-duration: 0.3s;
+    transition-delay: 0.1s;
+    cursor: pointer;
+}

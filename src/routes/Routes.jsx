@@ -5,6 +5,7 @@ import Register from "../pages/auth/Register";
 import ResetPassword from "../pages/auth/ResetPassword";
 import Onboarding from "../pages/auth/Onboarding";
 import Dashbaord from "../pages/dashboard/Index";
+import Users from "../pages/users/Users";
 
 // Define your router configuration
  const router = createBrowserRouter([
@@ -31,6 +32,10 @@ import Dashbaord from "../pages/dashboard/Index";
   {
     path: '/dashboard',
     element: <Dashbaord />,
+  },
+  {
+    path: '/users',
+    element: <Users />,
   },
 ]);
 

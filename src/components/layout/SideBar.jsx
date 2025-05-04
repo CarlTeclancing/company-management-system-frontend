@@ -12,11 +12,11 @@ function SideBar() {
         </div>
 
     <>
-        <Link className="side-link-active" to={'/'}>
+        <Link className="side-link-active" to={'/dashboard'}>
             <span>Dashbaord</span>
         </Link>
         <span className="m-100">USer Management</span>
-        <Link className="side-link" to={'/'}>
+        <Link className="side-link" to={'/users'}>
             <span>Users</span>
         </Link>
         <Link className="side-link" to={'/'}>
