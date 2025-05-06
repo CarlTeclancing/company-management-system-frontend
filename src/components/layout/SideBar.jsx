@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../../assets/images/logo.svg'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './layout.css'
 
 function SideBar() {
+    const [activeNav, setACtiveNav] = useState(0)
+    const location = useLocation()
   return (
     <div className='side-nav'>
         <div className="w-100">
@@ -12,11 +14,18 @@ function SideBar() {
         </div>
 
     <>
-        <Link className="side-link-active" to={'/dashboard'}>
+        <Link 
+            
+            className={location.pathname == "/dashboard" ?"side-link-active":"side-link"} 
+            to={'/dashboard'}
+            
+            >
             <span>Dashbaord</span>
         </Link>
         <span className="m-100">USer Management</span>
-        <Link className="side-link" to={'/users'}>
+        <Link 
+            className={location.pathname == "/users" ?"side-link-active":"side-link"} 
+            to={'/users'}>
             <span>Users</span>
         </Link>
         <Link className="side-link" to={'/'}>
