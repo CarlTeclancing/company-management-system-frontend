@@ -15,10 +15,11 @@ const Register = () => {
     number: '',
     country: '',
     address: '',
-    role: '', // added role to track dropdown value
+    role: '',
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false); // optional
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -26,7 +27,7 @@ const Register = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newErrors = {};
@@ -42,24 +43,25 @@ const Register = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      const { name, email, password, number, country, address, role } = form;
+      const { name, email, password, number, address, role } = form;
 
-      axios.post('http://localhost:5000/api/users', {
-        name,
-        email,
-        password,
-        number,
-        country,
-        address,
-        role,
-      })
-        .then(res => {
-          console.log(res);
-          navigate('/onboarding');
-        })
-        .catch(err => {
-          console.error(err);
+      try {
+        setLoading(true);
+        await axios.post('http://localhost:5000/api/auth/register', {
+          name,
+          email,
+          password,
+          role,
+          number,
+          address,
         });
+        setLoading(false);
+        navigate('/onboarding'); // ✅ correct redirect
+      } catch (err) {
+        setLoading(false);
+        console.error(err);
+        alert('Registration failed: ' + (err.response?.data?.message || 'Unknown error'));
+      }
     }
   };
 
@@ -153,7 +155,7 @@ const Register = () => {
           />
         </div>
 
-        <Button value={"Sign Up"} type={"btn-primary-100"} />
+        <Button value={loading ? 'Submitting...' : 'Sign Up'} type={"btn-primary-100"} />
 
         <Link className='m-10' to='/login'>
           Already have an account?

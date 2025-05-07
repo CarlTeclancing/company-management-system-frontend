@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import logo from '../../assets/images/logo.svg'
 import { Link, useLocation } from 'react-router-dom'
 import './layout.css'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 function SideBar() {
     const [activeNav, setACtiveNav] = useState(0)
@@ -20,44 +21,56 @@ function SideBar() {
             to={'/dashboard'}
             
             >
+            <i class="bi bi-house"></i> 
             <span>Dashbaord</span>
         </Link>
         <span className="m-100">USer Management</span>
         <Link 
             className={location.pathname == "/users" ?"side-link-active":"side-link"} 
             to={'/users'}>
+            <i class="bi bi-people"></i>
             <span>Users</span>
         </Link>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-person-vcard"></i>
             <span>Clients</span>
         </Link>
         <span className="m-100">Project Management</span>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-folder"></i>
             <span>Projects</span>
         </Link>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-calendar-check"></i>
             <span>Task</span>
         </Link>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-calendar-week"></i>
             <span>Meetings</span>
         </Link>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-chat-dots"></i>
             <span>Messages</span>
         </Link>
         <span className="m-100">Other Management</span>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-receipt"></i>
             <span>Invoices</span>
         </Link>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-box-seam"></i>
             <span>Inventory</span>
         </Link>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-piggy-bank"></i>
             <span>Finances</span>
         </Link>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-folder"></i>
             <span>Files</span>
         </Link>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-bar-chart"></i>
             <span>Analytics</span>
         </Link>
         <hr />
@@ -66,9 +79,11 @@ function SideBar() {
         <hr />
         <span className="m-100">Settings & Support</span>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-gear"></i>
             <span>Settings</span>
         </Link>
         <Link className="side-link" to={'/'}>
+            <i class="bi bi-headset"></i>
             <span>System Support</span>
         </Link>
         

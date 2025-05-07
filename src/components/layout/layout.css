@@ -57,6 +57,12 @@
     text-decoration: none;
     font-weight: 600;
 }
+.side-link-active span, .side-link span{
+    margin-left: 12px;
+}
+.bi{
+    font-size: 24px;
+}
 .w-100{
     width: 100%;
     display: flex;
