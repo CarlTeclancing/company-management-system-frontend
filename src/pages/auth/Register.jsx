@@ -60,7 +60,7 @@ const Register = () => {
       } catch (err) {
         setLoading(false);
         console.error(err);
-        alert('Registration failed: ' + (err.response?.data?.message || 'Unknown error'));
+        console.log('Registration failed: ' + (err.response?.data?.message || 'Unknown error'));
       }
     }
   };

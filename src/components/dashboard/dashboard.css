@@ -168,3 +168,29 @@
   .user-profile p{
     margin-top: -12px;
   }
+  .form-container-overlay{
+    position: fixed;
+    top: 0px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(0, 0, 0, 0.592);
+    z-index: 100;
+  }
+  #close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: none;
+    border: none;
+    color: var(--bg-white);
+    font-size: 24px;
+    cursor: pointer;
+    font-size: 40px;
+  }
+  .none{
+    display: none;
+  }
