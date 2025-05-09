@@ -31,12 +31,12 @@ function SideBar() {
             <i class="bi bi-people"></i>
             <span>Users</span>
         </Link>
-        <Link className="side-link" to={'/'}>
+        <Link className={location.pathname == "/clients" ?"side-link-active":"side-link"} to={'/clients'}>
             <i class="bi bi-person-vcard"></i>
             <span>Clients</span>
         </Link>
         <span className="m-100">Project Management</span>
-        <Link className="side-link" to={'/'}>
+        <Link className={location.pathname == "/projects" ?"side-link-active":"side-link"} to={'/projects'}>
             <i class="bi bi-folder"></i>
             <span>Projects</span>
         </Link>
