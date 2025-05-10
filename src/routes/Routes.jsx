@@ -8,6 +8,7 @@ import Dashbaord from "../pages/dashboard/Index";
 import Users from "../pages/users/Users";
 import Client from "../pages/client/Client";
 import Projects from "../pages/projects/Projects";
+import Settings from "../pages/settings/Settings";
 
 // Define your router configuration
  const router = createBrowserRouter([
@@ -46,6 +47,10 @@ import Projects from "../pages/projects/Projects";
   {
     path: '/projects',
     element: <Projects />,
+  },
+  {
+    path: '/dashboard/settings',
+    element: <Settings />,
   },
 ]);
 

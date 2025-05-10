@@ -18,7 +18,7 @@ const DropdownField = ({ label, name, value, onChange, options, placeholder = "S
           </option>
         ))}
       </select>
-      {/*error && <span className="error-message">{error}</span> */}
+      {error ? <span className="error-message">{error}</span>:""}
     </div>
   );
 };

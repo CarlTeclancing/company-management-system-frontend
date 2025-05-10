@@ -78,7 +78,7 @@ function SideBar() {
         <hr />
         <hr />
         <span className="m-100">Settings & Support</span>
-        <Link className="side-link" to={'/'}>
+        <Link className={location.pathname == "/dashboard/settings" ?"side-link-active":"side-link"} to={'/dashboard/settings'}>
             <i class="bi bi-gear"></i>
             <span>Settings</span>
         </Link>

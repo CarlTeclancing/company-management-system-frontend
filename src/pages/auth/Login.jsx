@@ -30,7 +30,7 @@ const Login = () => {
         const { email, password } = form;
       try {
         setLoading(true);
-        const response = await axios.post('http://localhost:5000/api/auth/login', {
+        const response = await axios.post('http://localhost:5000/v1/api/auth/login', {
           email,
           password,
         });
@@ -47,7 +47,7 @@ const Login = () => {
         console.error('Login error:', error);
         setErrors({ general: 'Invalid email or password' });
       } finally {
-        setLoading(false);
+        setLoading(false)  ;
       }
     }
   };
