@@ -2,7 +2,7 @@ import React from 'react'
 import InputField from '../auth/InputField'
 import notificationIcon from '../../assets/icons/notification-icon.png'
 import userImg from '../../assets/icons/userImg.png'
-function TopBar() {
+function TopBar( {logout}) {
   return (
     <div className='top-nav'>
         <div className='w-50'></div>
@@ -18,7 +18,13 @@ function TopBar() {
         <div className='profile-notification'>
             <img src={notificationIcon} alt="" />
             <img src={userImg} alt="" />
-        
+            <div className='profile-dropdown'>
+                <ul>
+                    <li onClick={logout}>Logout</li>
+                    <li>Settings</li>
+                    <li>Profile</li>
+                </ul>
+            </div>
         </div>
 
     </div>

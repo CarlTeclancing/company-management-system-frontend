@@ -6,6 +6,7 @@ import logo from '../../assets/images/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import DropdownField from '../../components/auth/DropDownField';
 import axios from 'axios';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -21,6 +22,16 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false); // optional
   const navigate = useNavigate();
+    const {
+      user,
+      setUser,
+      isLoggedIn,
+      setIsLoggedIn
+    } = useAuth();
+  
+    if(isLoggedIn === true) {
+      navigate('/dashboard');
+    }
 
   const handleChange = (e) => {
     const { name, value } = e.target;

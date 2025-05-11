@@ -1,23 +1,37 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import InputField from '../../components/auth/InputField';
-import './auth.css';
 import Button from '../../components/common/button';
 import logo from '../../assets/images/logo.svg';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // Hook to navigate programmatically
+  const navigate = useNavigate();
+
+  // ✅ Hook used at top level
+  const {
+    user,
+    setUser,
+    isLoggedIn,
+    setIsLoggedIn
+  } = useAuth();
+
+  // ✅ Redirect if already logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/dashboard');
+    }
+  }, [isLoggedIn, navigate]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const newErrors = {};
 
@@ -27,34 +41,40 @@ const Login = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-        const { email, password } = form;
       try {
         setLoading(true);
         const response = await axios.post('http://localhost:5000/v1/api/auth/login', {
-          email,
-          password,
+          email: form.email,
+          password: form.password,
         });
 
-        const { token, user } = response.data;
+        const { token, userData } = response.data;
+        console.log('Login response:', response.data);
 
-        // Save token and user info to localStorage or context
+        // ✅ Save to localStorage
         localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('user', JSON.stringify(userData));
 
-        // Redirect to dashboard
+        // ✅ Update context
+        setUser(userData);
+        console.log('User data:', userData);
+        console.log('User token:', token);
+        setIsLoggedIn(true);
+
+        // ✅ Redirect
         navigate('/dashboard');
       } catch (error) {
         console.error('Login error:', error);
         setErrors({ general: 'Invalid email or password' });
       } finally {
-        setLoading(false)  ;
+        setLoading(false);
       }
     }
   };
 
   return (
     <div className="form-container">
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleLogin}>
         <img src={logo} alt="logo" />
         <h2>Login</h2>
         <p>Enter your credentials to access your account</p>
