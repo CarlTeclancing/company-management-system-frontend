@@ -20,11 +20,13 @@ function Layout( {children}) {
       const storedUser = localStorage.getItem('user');
       const token = localStorage.getItem('token');
 
-      if (storedUser && token) {
-        setUser(storedUser);
-        console.log('User data:', user);
+      console.log('User data:', user);
 
-      }
+      // if (storedUser && token) {
+      //   setUser(storedUser);
+      //   console.log('User data:', user);
+
+      // }
       if (!storedUser && !token) {
         navigate('/login');
       }

@@ -69,7 +69,7 @@ const Login = () => {
         });
 
         const { token, userData } = response.data;
-        console.log('Login response:', response.data);
+        //console.log('Login response:', response.data);
 
         // Save to localStorage
         localStorage.setItem('token', token);
@@ -77,7 +77,8 @@ const Login = () => {
 
         // Update context
         setUser(userData);
-        console.log('User data:', userData);
+        //console.log(token)
+        //console.log('User data:', userData);
         setIsLoggedIn(true);
 
       } catch (error) {
