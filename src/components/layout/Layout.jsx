@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React, { Children, useEffect } from 'react'
 import SideBar from './SideBar'
 import TopBar from './TopBar'
 import { useAuth } from '../../contexts/AuthContext'
@@ -14,9 +14,27 @@ function Layout( {children}) {
     setIsLoggedIn
   } = useAuth();
 
-  if(isLoggedIn === false) {
-    navigate('/login');
-  }
+  //checking if user is login before grating access to the layout
+  
+  useEffect(() => {
+      const storedUser = localStorage.getItem('user');
+      const token = localStorage.getItem('token');
+
+      if (storedUser && token) {
+        setUser(storedUser);
+        console.log('User data:', user);
+
+      }
+      if (!storedUser && !token) {
+        navigate('/login');
+      }
+    }, [ navigate, setUser]);
+
+
+  // if(isLoggedIn === false) {
+  //   navigate('/login');
+  // }
+
 
   const logout = (e) => {
     e.preventDefault();

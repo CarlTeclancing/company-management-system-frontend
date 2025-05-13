@@ -67,7 +67,7 @@ const Register = () => {
           address,
         });
         setLoading(false);
-        navigate('/onboarding'); // ✅ correct redirect
+        navigate('/login'); // redirect
       } catch (err) {
         setLoading(false);
         console.error(err);

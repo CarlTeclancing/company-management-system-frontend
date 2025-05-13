@@ -12,7 +12,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ Hook used at top level
   const {
     user,
     setUser,
@@ -20,7 +19,28 @@ const Login = () => {
     setIsLoggedIn
   } = useAuth();
 
-  // ✅ Redirect if already logged in
+  // Hydrate auth context from localStorage if available
+  const storedUser = localStorage.getItem('user');
+  const token = localStorage.getItem('token');
+  useEffect(() => {
+
+    if (storedUser && token) {
+      setUser(storedUser);
+      setIsLoggedIn(true);
+    }
+  }, [storedUser, token, setIsLoggedIn]);
+
+  // Check if user has company linked already
+  // useEffect(() => {
+
+  //   if (user && user.company) {
+  //     navigate('/dashboard');
+  //   } else if (user && !user.company) {
+  //     navigate('/onboarding');
+  //   }
+  // }, [setUser, setIsLoggedIn]);
+
+  // Redirect after context is hydrated
   useEffect(() => {
     if (isLoggedIn) {
       navigate('/dashboard');
@@ -51,18 +71,15 @@ const Login = () => {
         const { token, userData } = response.data;
         console.log('Login response:', response.data);
 
-        // ✅ Save to localStorage
+        // Save to localStorage
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(userData));
 
-        // ✅ Update context
+        // Update context
         setUser(userData);
         console.log('User data:', userData);
-        console.log('User token:', token);
         setIsLoggedIn(true);
 
-        // ✅ Redirect
-        navigate('/dashboard');
       } catch (error) {
         console.error('Login error:', error);
         setErrors({ general: 'Invalid email or password' });

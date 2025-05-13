@@ -44,20 +44,18 @@ function Dashbaord() {
                 </>
             </div>
             <div className="row">
-            <Widget title={"Task"} value={"12"} valueUp={12} message={'uncompleted task'} />
-            <Widget title={"Projects"} value={"9"} valueUp={4} message={'uncompleted Projects'} />
-            <Widget title={"Inventory"} value={"120"} valueUp={16} message={'Missing itens Low stock'} />
-            <Widget title={"Finances"} value={"200900xaf"} valueUp={45} message={'This Month Revenue'} />
+                <Widget title={"Task"} value={"12"} valueUp={12} message={'uncompleted task'} />
+                <Widget title={"Projects"} value={"9"} valueUp={4} message={'uncompleted Projects'} />
+                <Widget title={"Inventory"} value={"120"} valueUp={16} message={'Missing itens Low stock'} />
+                <Widget title={"Finances"} value={"12B xaf"} valueUp={45} message={'This Month Revenue'} />
             </div>
             <div className="row">
                 <FinancialOverview />
-                <TaskOverview />
-                
+                <TaskOverview />    
             </div>
             <div className="row">
                 <ProjectStatus projects={projectData} />
                 <RecentActivities />
-                
             </div>
         </Layout>
     </>
