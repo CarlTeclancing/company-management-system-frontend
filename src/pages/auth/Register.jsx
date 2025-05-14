@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InputField from '../../components/auth/InputField';
 import './auth.css';
 import Button from '../../components/common/button';
@@ -7,8 +7,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import DropdownField from '../../components/auth/DropDownField';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
+import { AppContext } from '../../contexts/AppContext';
 
 const Register = () => {
+  
+  //GET compay id from context
+   const {companyData} = React.useContext(AppContext);
+   const companyId = companyData?.id;
+   console.log('Company ID:', companyId);
+
+
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -18,6 +26,12 @@ const Register = () => {
     address: '',
     role: '',
   });
+
+
+  //logs the company data
+  useEffect(() => {
+    console.log('Company data updated:', companyData);
+  }, [companyData]);
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false); // optional
@@ -55,7 +69,7 @@ const Register = () => {
 
     if (Object.keys(newErrors).length === 0) {
       const { name, email, password, number, address, role } = form;
-
+      
       try {
         setLoading(true);
         await axios.post('http://localhost:5000/v1/api/auth/register', {
@@ -65,6 +79,7 @@ const Register = () => {
           role,
           number,
           address,
+          companyId: companyId,
         });
         setLoading(false);
         navigate('/login'); // redirect

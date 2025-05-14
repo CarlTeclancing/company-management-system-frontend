@@ -6,6 +6,7 @@ export const AppContext = createContext();
 function AppContextProvider({ children }) {
   const [clients, setClients] = useState([]);
   const [users, setUsers] = useState([]);
+  const [companyData, setCompanyData] = useState([]);
   const [products, setProducts] = useState([]);
   const [projects, setProjects] = useState([]);
   const [task, setTask] = useState([]);
@@ -20,6 +21,7 @@ function AppContextProvider({ children }) {
         clients, setClients,
         users, setUsers,
         user, setUser,
+        companyData, setCompanyData,
         products, setProducts,
         projects, setProjects,
         task, setTask,
