@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Layout from '../../components/layout/Layout'
 import Tabs from '../../components/layout/Tabs'
 import UserProfile from '../../components/dashboard/userComponents/UserProfile'
 import AddUser from '../../components/dashboard/userComponents/AddUser'
 import UserList from '../../components/dashboard/userComponents/UserList'
 import AddButton from '../../components/common/AddButton'
+import { AppContext } from '../../contexts/AppContext'
 
 // Tab data
 let tabData = [
@@ -19,6 +20,8 @@ let tabData = [
 ];
 
 function Users() {
+
+  const {companyData, setCompanyData} = React.useContext(AppContext);
  
   const [activeModal, setActiveModal] = useState(false);
 
@@ -33,7 +36,9 @@ function Users() {
         </div>
       
       <Tabs tabData={tabData} />
-      <UserProfile />
+      {/*<UserProfile />*/}
+      <hr />
+      <hr />
       <UserList />
         <div className={activeModal == true ?"form-container-overlay":"none"}>
             <i className="bi bi-x" id='close' onClick={()=>setActiveModal(false)}></i>

@@ -1,14 +1,39 @@
-import { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import InputField from '../../../components/auth/InputField';
-
 import Button from '../../../components/common/button';
 import logo from '../../../assets/images/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DropdownField from '../../auth/DropDownField';
+import { AppContext } from '../../../contexts/AppContext';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const AddUser = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
+
+    //getting the company id from authcontext
+      const {
+        user,
+        setUser,
+        isLoggedIn,
+        setIsLoggedIn
+      } = useAuth();
+
+      console.log('User:', user);
+      useEffect(() => {
+        console.log('Raw user:', user);
+      
+        // Check if it's a string
+        if (typeof user === 'string') {
+          const parsedUser = JSON.parse(user);
+          console.log('Parsed Company ID:', parsedUser.company_id);
+          
+        } else {
+          console.log('Company ID:', user?.company_id);
+        }
+      }, [user]);
+
+
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -31,6 +56,9 @@ const AddUser = ( {modal}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const parsedUser = JSON.parse(user);
+    const companyId = parsedUser.company_id;
+
     const newErrors = {};
 
     if (!form.name) newErrors.name = 'Name is required';
@@ -48,16 +76,31 @@ const AddUser = ( {modal}) => {
 
       try {
         setLoading(true);
-        await axios.post('http://localhost:5000/api/auth/register', {
+        await axios.post('http://localhost:5000/v1/api/users/', {
           name,
           email,
           password,
           role,
           number,
           address,
+          companyId,
         });
         setLoading(false);
-        navigate('/onboarding'); // ✅ correct redirect
+              // Reset the form after successful submission
+      setForm({
+        name: '',
+        email: '',
+        password: '',
+        number: '',
+        country: '',
+        address: '',
+        role: '',
+      });
+
+      // clear errors too
+      setErrors({});
+        
+        navigate('/users'); // ✅ correct redirect
       } catch (err) {
         setLoading(false);
         console.error(err);
@@ -72,14 +115,14 @@ const AddUser = ( {modal}) => {
     { label: 'Guest', value: 'guest' },
   ];
 
-  const [activeModal, setActiveModal] = useState(true);
+ 
 
   return (
     <>
       <form className='form' onSubmit={handleSubmit}>
-        <img src={logo} alt="logo" />
-        <h2>Create an Account</h2>
-        <p>Enter your information to create a company account</p>
+        
+        <h2>Create an a User Account</h2>
+        <p>Enter user information to create a account</p>
 
         <div className="form-el">
           <InputField
@@ -157,8 +200,10 @@ const AddUser = ( {modal}) => {
             error={errors.address}
           />
         </div>
-
-        <Button value={loading ? 'Submitting...' : 'Sign Up'} type={"btn-primary-100"} />
+      <div className="row-flex-left">
+        <Button value={loading ? 'Submitting...' : 'Add User'} type={"btn-primary"} />
+      </div>
+        
 
       </form>
     </>

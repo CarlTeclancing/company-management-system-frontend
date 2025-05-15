@@ -40,7 +40,7 @@ function SideBar() {
             <i class="bi bi-folder"></i>
             <span>Projects</span>
         </Link>
-        <Link className="side-link" to={'/'}>
+        <Link className="side-link" to={'/task'}>
             <i class="bi bi-calendar-check"></i>
             <span>Task</span>
         </Link>

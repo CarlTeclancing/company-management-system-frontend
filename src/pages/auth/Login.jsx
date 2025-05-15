@@ -76,7 +76,7 @@ const Login = () => {
         localStorage.setItem('user', JSON.stringify(userData));
 
         // Update context
-        setUser(userData);
+        setUser(response.data.userData);
         //console.log(token)
         //console.log('User data:', userData);
         setIsLoggedIn(true);
