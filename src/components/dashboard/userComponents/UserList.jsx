@@ -5,58 +5,77 @@ import { useAuth } from '../../../contexts/AuthContext';
 
 function UserList() {
   const { users, setUsers } = useContext(AppContext);
-        const {
-          user,
-          setUser,
-          isLoggedIn,
-          setIsLoggedIn
-        } = useAuth();
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useAuth();
+
   const [isLoading, setIsLoading] = useState(true);
   const [errorFetching, setErrorFetching] = useState('');
-  
-  
-  const storedUser = localStorage.getItem('user');
 
-  if (storedUser) {
+  useEffect(() => {
+    // Get and parse user from localStorage
+    const storedUser = localStorage.getItem('user');
+    if (!storedUser) {
+      console.warn('No user found in localStorage');
+      setIsLoading(false);
+      return;
+    }
+
+    let parsedUser;
     try {
-      const parsedUser = JSON.parse(storedUser);
+      parsedUser = JSON.parse(storedUser);
       console.log('Parsed User:', parsedUser);
-      const id = parsedUser?.company_id || parsedUser.company_id;
-      console.log('Company ID:', id);
     } catch (error) {
       console.error('Error parsing user from localStorage:', error);
+      setIsLoading(false);
+      return;
     }
-  } else {
-    console.warn('No user found in localStorage');
-  }
-  
 
-  //sellecting all users in the company
-  
-  useEffect(() =>{
+    const companyId = parsedUser?.company_id;
+
+    if (companyId === undefined || companyId === null || isNaN(Number(companyId))) {
+      console.warn('Invalid company_id in parsed user object:', companyId);
+      setErrorFetching('User has invalid or missing company ID.');
+      setIsLoading(false);
+      return;
+    }
+    
+
+    const id = parseInt(companyId); // ensures it's a number
+
+    console.log('Fetching users for company ID:', id);
 
     const getUserById = async (id) => {
-        try {
-          const response = await fetch(`http://localhost:5000/v1/api/company/${id}}`);
-      
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-      
-          const data = await response.json();
-          setUsers(data); // Assuming you have a `setUser` hook
-          console.table(data);
-        } catch (error) {
-          console.error('Error fetching user:', error);
-          setErrorFetching(error.message);
-        } finally {
-          setIsLoading(false);
+      try {
+        const response = await fetch(`http://localhost:5000/v1/api/company/${id}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-      };
-      
 
-      getUserById();
-  }, [setUsers]);
+        const data = await response.json();
+        setUsers(data);
+        console.log('Fetched users:', data);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        setErrorFetching(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getUserById();
+  }, [user, setUsers,]);
+
+  // UI Rendering
+  if (isLoading) {
+    return <p>Loading users... (Check console for debug)</p>;
+  }
+
+  if (errorFetching) {
+    return <p>Error fetching users: {errorFetching}</p>;
+  }
+
+  if (!users || users.length === 0) {
+    return <p>No users found for this company.</p>;
+  }
 
   return (
     <table>
@@ -72,11 +91,10 @@ function UserList() {
           <th>Action</th>
         </tr>
       </thead>
-
       <tbody>
         {users.map((u, index) => (
           <tr key={u.id || index}>
-            <td><img src={userImg} alt="User" /></td>
+            <td><img src={userImg} alt="User" style={{ width: '40px' }} /></td>
             <td>{u.id}</td>
             <td>{u.full_name}</td>
             <td>{u.email}</td>
