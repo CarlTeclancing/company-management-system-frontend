@@ -10,6 +10,8 @@ function Layout( {children}) {
   const {
     user,
     setUser,
+    companyId,
+    setCompanyId,
     isLoggedIn,
     setIsLoggedIn
   } = useAuth();
@@ -17,25 +19,31 @@ function Layout( {children}) {
   //checking if user is login before grating access to the layout
   
   useEffect(() => {
-      const storedUser = localStorage.getItem('user');
-      const token = localStorage.getItem('token');
-
-      console.log('User data:', user);
+      // const storedUser = localStorage.getItem('user');
+      // const token = localStorage.getItem('token');
+      // //setUser(JSON.stringify(storedUser))
+      // const parsedUser = JSON.parse(storedUser);
+      // setUser(parsedUser);
+      // console.log('User data:', user);
+      // console.log(user?.company_id)
 
       // if (storedUser && token) {
       //   setUser(storedUser);
       //   console.log('User data:', user);
 
       // }
-      if (!storedUser && !token) {
+      if (!user && !companyId) {
         navigate('/login');
       }
-    }, [ navigate, setUser]);
+      // if(isLoggedIn === false) {
+        
+      //   navigate('/login');
+      // }
+
+    }, [ isLoggedIn, navigate]);
 
 
-  // if(isLoggedIn === false) {
-  //   navigate('/login');
-  // }
+
 
 
   const logout = (e) => {

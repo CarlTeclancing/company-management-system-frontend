@@ -15,23 +15,24 @@ const AddUser = ( {modal}) => {
       const {
         user,
         setUser,
+        companyId,
         isLoggedIn,
         setIsLoggedIn
       } = useAuth();
 
       console.log('User:', user);
-      useEffect(() => {
-        console.log('Raw user:', user);
+      // useEffect(() => {
+      //   //console.log('Raw user:', user);
       
-        // Check if it's a string
-        if (typeof user === 'string') {
-          const parsedUser = JSON.parse(user);
-          console.log('Parsed Company ID:', parsedUser.company_id);
+      //   // Check if it's a string
+      //   if (typeof user === 'string') {
+      //     const parsedUser = JSON.parse(user);
+      //     console.log('Parsed Company ID:', parsedUser.company_id);
           
-        } else {
-          console.log('Company ID:', user?.company_id);
-        }
-      }, [user]);
+      //   } else {
+      //     console.log('Company ID:', user?.company_id);
+      //   }
+      // }, [user]);
 
 
   const [form, setForm] = useState({
@@ -56,8 +57,8 @@ const AddUser = ( {modal}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const parsedUser = JSON.parse(user);
-    const companyId = parsedUser.company_id;
+    // const parsedUser = JSON.parse(user);
+    // const companyId = parsedUser.company_id;
 
     const newErrors = {};
 
@@ -103,6 +104,7 @@ const AddUser = ( {modal}) => {
         navigate('/users'); // ✅ correct redirect
       } catch (err) {
         setLoading(false);
+        console.error('Error:', err.response?.data || err.message);
         console.error(err);
         console.log('Registration failed: ' + (err.response?.data?.message || 'Unknown error'));
       }
@@ -201,7 +203,7 @@ const AddUser = ( {modal}) => {
           />
         </div>
       <div className="row-flex-left">
-        <Button value={loading ? 'Submitting...' : 'Add User'} type={"btn-primary"} />
+        <Button value={loading ? 'Submitting...' : 'Add User'} type={"btn-primary"}  />
       </div>
         
 

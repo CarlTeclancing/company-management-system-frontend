@@ -10,6 +10,7 @@ import Client from "../pages/client/Client";
 import Projects from "../pages/projects/Projects";
 import Settings from "../pages/settings/Settings";
 import Task from "../pages/task/Task";
+import DeleteUser from "../pages/users/DeleteUser";
 
 // Define your router configuration
  const router = createBrowserRouter([
@@ -56,6 +57,10 @@ import Task from "../pages/task/Task";
   {
     path: '/task',
     element: <Task />,
+  },
+  {
+    path: '/users/delete/:id',
+    element: <DeleteUser />,
   },
 ]);
 

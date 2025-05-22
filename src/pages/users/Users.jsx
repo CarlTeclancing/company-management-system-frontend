@@ -38,6 +38,7 @@ function Users() {
       <Tabs tabData={tabData} />
       {/*<UserProfile />*/}
       <hr />
+      <h3>Employees</h3>
       <hr />
       <UserList />
         <div className={activeModal == true ?"form-container-overlay":"none"}>

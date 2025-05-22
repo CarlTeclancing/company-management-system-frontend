@@ -15,37 +15,40 @@ const Login = () => {
   const {
     user,
     setUser,
+    companyId,
+    setCompanyId,
     isLoggedIn,
-    setIsLoggedIn
+    setIsLoggedIn,
   } = useAuth();
 
-  // Hydrate auth context from localStorage if available
-  const storedUser = localStorage.getItem('user');
-  const token = localStorage.getItem('token');
+  // ✅ Hydrate auth context from localStorage on mount
   useEffect(() => {
+    // const storedUser = localStorage.getItem('user');
+    // const token = localStorage.getItem('token');
 
-    if (storedUser && token) {
-      setUser(storedUser);
-      setIsLoggedIn(true);
-    }
-  }, [storedUser, token, setIsLoggedIn]);
+    // if (storedUser && token) {
+    //   try {
+    //     const parsedUser = JSON.parse(storedUser);
+    //     setUser(parsedUser);
+    //     setIsLoggedIn(true);
+    //   } catch (err) {
+    //     console.error('Failed to parse user from localStorage:', err);
+    //   }
+    // }
 
-  // Check if user has company linked already
-  // useEffect(() => {
-
-  //   if (user && user.company) {
-  //     navigate('/dashboard');
-  //   } else if (user && !user.company) {
-  //     navigate('/onboarding');
-  //   }
-  // }, [setUser, setIsLoggedIn]);
-
-  // Redirect after context is hydrated
-  useEffect(() => {
     if (isLoggedIn) {
       navigate('/dashboard');
     }
-  }, [isLoggedIn, navigate]);
+  }, [user, navigate] ); // run once on component mount
+
+  // ✅ Redirect after successful login
+
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     navigate('/dashboard');
+  //   }
+  // }, [isLoggedIn, navigate]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -63,24 +66,25 @@ const Login = () => {
     if (Object.keys(newErrors).length === 0) {
       try {
         setLoading(true);
-        const response = await axios.post('http://localhost:5000/v1/api/auth/login', {
-          email: form.email,
-          password: form.password,
-        });
+        const response = await axios.post(
+          'http://localhost:5000/v1/api/auth/login',
+          {
+            email: form.email,
+            password: form.password,
+          }
+        );
 
         const { token, userData } = response.data;
-        //console.log('Login response:', response.data);
 
         // Save to localStorage
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(userData));
 
         // Update context
-        setUser(response.data.userData);
-        //console.log(token)
-        //console.log('User data:', userData);
+        setUser(userData);
+        setCompanyId(userData.company_id);
         setIsLoggedIn(true);
-
+        navigate('/dashboard');
       } catch (error) {
         console.error('Login error:', error);
         setErrors({ general: 'Invalid email or password' });
@@ -123,8 +127,8 @@ const Login = () => {
 
         <hr />
         <Button
-          value={loading ? "Signing in..." : "Sign in"}
-          type={"btn-primary-100"}
+          value={loading ? 'Signing in...' : 'Sign in'}
+          type={'btn-primary-100'}
           disabled={loading}
         />
         <hr />
