@@ -10,11 +10,14 @@ function DeleteUser() {
   useEffect(() => {
     const deleteUser = async (userId) => {
       try {
-        const response = await axios.delete(`http://localhost:5000/v1/api/users/${userId}`);
-        console.log('Deleted:', response.data);
+        const response = await axios.delete(`http://localhost:5000/v1/api/users/${userId}`)
+        .then(res => {
+            console.log('Deleted:', response.data);
+    
+            // Redirect after successful deletion
+            navigate('/users');
 
-        // Redirect after successful deletion
-        navigate('/users', { replace: true });
+        })
       } catch (error) {
         console.error('Delete failed:', error);
       }
@@ -23,7 +26,12 @@ function DeleteUser() {
     if (u?.id) {
       deleteUser(u.id);
     }
+
+    if(location.pathname == `/users/delete/${u.id}`){
+      navigate('/users');
+  }
   }, [u, navigate]);
+
 
   return null; // No UI needed
 }

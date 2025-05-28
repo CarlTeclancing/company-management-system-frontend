@@ -4,9 +4,9 @@
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    align-items:center;
-    padding:460px 30px 30px 30px;
-    justify-content: center;
+
+    padding:30px 30px 30px 30px;
+
     background-color: var(--bg-white);
     scroll-behavior: smooth;
 }
@@ -78,11 +78,11 @@
 .container{
     width: 100%;
     height: 100vh;
-    overflow-y: hidden;
-    position: absolute;
+    position:relative;
     display: flex;
     justify-content: space-between;
     top: 0px;
+    overflow-y: hidden;
     background-color: none;
     scroll-behavior: smooth;
 }
@@ -97,6 +97,7 @@
     padding: 24px;
     height: 100%;
     overflow: scroll;
+    margin-bottom: 100px;
 }
 .row{
     display: flex;

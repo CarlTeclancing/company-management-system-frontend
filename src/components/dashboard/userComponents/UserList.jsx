@@ -92,7 +92,10 @@ function UserList() {
               <i class="bi bi-three-dots"></i>
               <div className="drop-down">
                 <ul>
-                  <Link to={`/users/edit/${u.id}`}>
+                  <Link 
+                    to={`/users/edit/${u.id}`}
+                    state={u}
+                    >
                     <li><i class="bi bi-pencil-square"></i> Edit</li>
                   </Link>
                   <Link 
