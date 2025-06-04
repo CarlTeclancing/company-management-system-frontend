@@ -4,6 +4,7 @@ import AddButton from '../../components/common/AddButton'
 import Tabs from '../../components/layout/Tabs'
 import ProjectCard from '../../components/dashboard/projectsComponents/ProjectCard'
 import AddProjects from '../../components/dashboard/projectsComponents/AddProjects'
+import AllProjects from '../../components/dashboard/projectsComponents/AllProjects'
 
 function Projects() {
     const [activeModal, setActiveModal] = React.useState(false);
@@ -34,7 +35,7 @@ function Projects() {
         ]} />
 
         <div className="row">
-            <ProjectCard />
+            <AllProjects />
         </div>
         <div className={activeModal == true ?"form-container-overlay":"none"}>
             <i className="bi bi-x" id='close' onClick={()=>setActiveModal(false)}></i>

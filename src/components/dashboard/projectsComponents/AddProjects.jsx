@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import InputField from '../../../components/auth/InputField';
 
 import Button from '../../../components/common/button';
@@ -7,9 +7,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DropdownField from '../../auth/DropDownField';
 import { useAuth } from '../../../contexts/AuthContext';
+//import { AppContext } from '../../../contexts/AppContext';
 
 const AddProjects = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
+    //const [companyData, setCompanyDatea] = useContext(AppContext);
 
     const {    
       user,
@@ -28,8 +30,8 @@ const AddProjects = ( {modal}) => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false); // optional
   const navigate = useNavigate();
-  console.log(user?.id)
-  console.log(companyId)
+  //console.log(user?.id)
+  //console.log(companyId)
   
 
   const handleChange = (e) => {
@@ -86,14 +88,21 @@ const AddProjects = ( {modal}) => {
           team: '',
           budget: '',
         });
-  
+        
+        setLoading(false);
         setErrors({});
-        setLoading(false); // ✅ Let the UI reflect this before navigating
+        console.log('Project created successfully');
+        // Optionally, you can show a success message here
+        // Redirect to the users page or any other page
+        // If you want to close the modal after submission
+        if (modalValue) {
+          setModalValue(false);
+        }
   
         // Add a slight delay before redirecting to ensure UI updates
         setTimeout(() => {
           navigate('/users');
-        }, 300);
+        }, 100);
   
       } catch (err) {
         setLoading(false);
