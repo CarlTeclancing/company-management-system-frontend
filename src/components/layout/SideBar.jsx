@@ -40,20 +40,20 @@ function SideBar() {
             <i class="bi bi-folder"></i>
             <span>Projects</span>
         </Link>
-        <Link className="side-link" to={'/task'}>
+        <Link className={location.pathname == "/task" ?"side-link-active":"side-link"} to={'/task'}>
             <i class="bi bi-calendar-check"></i>
             <span>Task</span>
         </Link>
-        <Link className="side-link" to={'/'}>
+        <Link className={location.pathname == "/meetings" ?"side-link-active":"side-link"} to={'/meetings'}>
             <i class="bi bi-calendar-week"></i>
             <span>Meetings</span>
         </Link>
-        <Link className="side-link" to={'/'}>
+        <Link className={location.pathname == "/messages" ?"side-link-active":"side-link"} to={'/messages'}>
             <i class="bi bi-chat-dots"></i>
             <span>Messages</span>
         </Link>
         <span className="m-100">Other Management</span>
-        <Link className="side-link" to={'/'}>
+        <Link className={location.pathname == "/invoices" ?"side-link-active":"side-link"} to={'/invoices'}>
             <i class="bi bi-receipt"></i>
             <span>Invoices</span>
         </Link>

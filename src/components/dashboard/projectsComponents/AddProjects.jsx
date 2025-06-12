@@ -92,9 +92,7 @@ const AddProjects = ( {modal}) => {
         setLoading(false);
         setErrors({});
         console.log('Project created successfully');
-        // Optionally, you can show a success message here
-        // Redirect to the users page or any other page
-        // If you want to close the modal after submission
+
         if (modalValue) {
           setModalValue(false);
         }
@@ -191,8 +189,10 @@ const AddProjects = ( {modal}) => {
             error={errors.budget}
           />
         </div>
+    <div className="row-flex-left">
+        <Button value={loading ? 'Submitting...' : 'Create Project'} type={"btn-primary"} />
 
-        <Button value={loading ? 'Submitting...' : 'Create Project'} type={"btn-primary-100"} />
+    </div>
 
       </form>
     </>

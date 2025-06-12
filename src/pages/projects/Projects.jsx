@@ -14,7 +14,7 @@ function Projects() {
             <h1>Projects Tracker</h1>
             <AddButton type={"btn-primary"} value={"Add Projects"} onClick={()=>setActiveModal(true)} />
         </div>
-
+        <>
         <Tabs tabData={[
             {
                 tabNumb: 1,
@@ -32,8 +32,8 @@ function Projects() {
                 tabNumb: 4,
                 tabValue: "Delayed"
             },
-        ]} />
-
+        ]}/>
+        </>
         <div className="row">
             <AllProjects />
         </div>

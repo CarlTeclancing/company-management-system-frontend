@@ -239,4 +239,10 @@
 .drop-down li{
   color: var(--primary-color);
 }
+.row-flex-left{
+  display: flex;
+  justify-content:end;
+  align-items: end;
+  width: 100%;
+}
   

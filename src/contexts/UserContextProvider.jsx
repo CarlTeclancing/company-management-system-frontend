@@ -7,11 +7,6 @@ const UserContextProvider =( {children} )=> {
 
   const [user, setUser ] = useState(null);
   
-  // useEffect(()=>{
-  //   onAuthChange((user)=>{
-  //     setUser(user)
-  //   })
-  // },[])
   return (
 
     <UserContext.Provider value={{user, setUser}}>
