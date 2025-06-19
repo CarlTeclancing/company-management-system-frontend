@@ -101,7 +101,10 @@
 }
 .row{
     display: flex;
-    justify-content: space-between;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    align-items: center;
+    flex-wrap: wrap;
     width: 100%;
     height: auto;
 }

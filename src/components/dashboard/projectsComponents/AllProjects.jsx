@@ -17,9 +17,10 @@ const AllProjects = () => {
         try {
           console.log("Fetching projects for companyId:", id);
           const response = await axios.get(`http://localhost:5000/v1/api/projects/${id}`);
-          console.log('Raw API Response:', response);
+          //console.log('Raw API Response:', response);
           setProjects(response.data);
-          console.log('Fetched Projects:', response.data);
+          //console.log('Fetched Projects:', response.data);
+          console.log("fetched projects : ", projects)
         } catch (error) {
           console.error('Error fetching projects:', error.message);
           setErrorFetching(error.response?.data?.message || error.message);
@@ -29,13 +30,16 @@ const AllProjects = () => {
       };
     
       if (id) getCompaniesById(id);
-    }, [companyId]);
+    }, [companyId, user]);
     
-    
+    if(!projects || projects.length === 0 ) return <p>No projects found for this company</p>
     
   return (
-    <div className='col'>
-      <ProjectCard />
+    <div className='row'>
+      {projects.map((index, project) =>(
+        <ProjectCard  key={index} project={project}/>
+      ))}
+      
     </div>
   )
 }

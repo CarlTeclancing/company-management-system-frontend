@@ -78,7 +78,7 @@ const AddProjects = ( {modal}) => {
           user_id,
           company_id,
         });
-  
+        setLoading(false);
         // Reset the form
         setForm({
           name: '',
@@ -88,24 +88,18 @@ const AddProjects = ( {modal}) => {
           team: '',
           budget: '',
         });
-        
-        setLoading(false);
+        // Reset errors
         setErrors({});
         console.log('Project created successfully');
-
-        if (modalValue) {
-          setModalValue(false);
-        }
-  
         // Add a slight delay before redirecting to ensure UI updates
-        setTimeout(() => {
-          navigate('/users');
-        }, 100);
+        // setTimeout(() => {
+        //   navigate('/users');
+        // }, 100);
   
       } catch (err) {
         setLoading(false);
-        console.error('Submission error:', err);
-        console.log('Registration failed: ' + (err.response?.data?.message || 'Unknown error'));
+        console.error('Submission error:', err.response?.data?.message);
+        //console.log('Registration failed: ' + (err.response?.data?.message || 'Unknown error'));
       }
     }
   };
