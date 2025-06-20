@@ -36,7 +36,7 @@ function SideBar() {
             <span>Clients</span>
         </Link>
         <span className="m-100">Project Management</span>
-        <Link className={location.pathname == "/projects" ?"side-link-active":"side-link"} to={'/projects'}>
+        <Link className={((location.pathname == "/projects") || (location.pathname == "/projects/edit/:id")) ?"side-link-active":"side-link"} to={'/projects'}>
             <i class="bi bi-folder"></i>
             <span>Projects</span>
         </Link>

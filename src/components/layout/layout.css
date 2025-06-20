@@ -103,6 +103,16 @@
     display: flex;
     padding-top: 24px;
     padding-bottom: 24px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}
+.row-narrow{
+    display: flex;
+    padding-top: 24px;
+    padding-bottom: 24px;
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
