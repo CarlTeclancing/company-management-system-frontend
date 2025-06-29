@@ -1,16 +1,15 @@
 import { useContext, useState } from 'react';
-import InputField from '../../../components/auth/InputField';
-
-import Button from '../../../components/common/button';
-import logo from '../../../assets/images/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import DropdownField from '../../auth/DropDownField';
-import { useAuth } from '../../../contexts/AuthContext';
+import InputField from '../../components/auth/InputField';
+import DropdownField from '../../components/auth/DropDownField';
+import Button from '../../components/common/button';
+import { useAuth } from '../../contexts/AuthContext';
+import Layout from '../../components/layout/Layout';
 //import { AppContext } from '../../../contexts/AppContext';
 
-const AddProjects = ( {modal}) => {
-    const [modalValue, setModalValue] = useState(modal);
+const EditProjects = ( id ) => {
+    //const [modalValue, setModalValue] = useState(modal);
     //const [companyData, setCompanyDatea] = useContext(AppContext);
 
     const {    
@@ -68,7 +67,7 @@ const AddProjects = ( {modal}) => {
       try {
         setLoading(true);
   
-        await axios.post('http://localhost:5000/v1/api/projects/', {
+        await axios.put(`http://localhost:5000/v1/api/projects/${id}`, {
           name,
           description,
           sdate,
@@ -90,6 +89,7 @@ const AddProjects = ( {modal}) => {
         });
         // Reset errors
         setErrors({});
+        navigate('/projects');
         console.log('Project created successfully');
         // Add a slight delay before redirecting to ensure UI updates
         // setTimeout(() => {
@@ -114,7 +114,9 @@ const AddProjects = ( {modal}) => {
  
 
   return (
-    <>
+
+    <Layout>
+
       <form className='form' onSubmit={handleSubmit}>
         <h4>Create New Project</h4>
         <p>Add a new project to your tracker. Click save when you're done.</p>
@@ -189,8 +191,9 @@ const AddProjects = ( {modal}) => {
     </div>
 
       </form>
-    </>
+    
+    </Layout>
   );
 };
 
-export default AddProjects;
+export default EditProjects;

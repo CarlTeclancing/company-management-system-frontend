@@ -1,22 +1,22 @@
 import React from 'react'
 import './ProjectCard.css'
 
-function ProjectCard() {
+function ProjectCard(key, project) {
   return (
-    <div className="card-container">
+    <div className="card-container" key={key}>
       <div className="card-checkmark">&#10003;</div>
             <div className="card-header">
-            <h3>Website Redesign</h3>
+            <h3>{project?.name}</h3>
             <span className="card-menu">⋮</span>
             </div>
 
             <div className="card-status-row">
             <span className="status-badge">On Track</span>
-            <span className="date">📅 May 30, 2025</span>
+            <span className="date">📅 {project?.start_date}</span>
             </div>
 
             <p className="description">
-            Redesign the company website with modern UI/UX
+            {project?.description}
             </p>
 
             <div className="progress-section">

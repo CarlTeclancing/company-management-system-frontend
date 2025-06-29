@@ -1,7 +1,10 @@
 .form{
-   width: 700px;
+   width: 500px;
    height:auto;
    padding: 24px;
+   position: relative;
+   top: 100px;
+   margin-bottom: 100px;
    background-color: var(--bg-white);
    border-radius: 16px; 
    border: 1px solid var(--border-color);
@@ -9,7 +12,10 @@
    align-items: center;
    justify-content: center;
    flex-direction: column;
-   margin: 40px;
+   overflow-y: scroll;
+}
+::-webkit-scrollbar{
+    width: 0px;
 }
 .form h2{
     font-size: 32px;

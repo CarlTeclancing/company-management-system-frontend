@@ -9,7 +9,7 @@ import DropdownField from '../../auth/DropDownField';
 import { useAuth } from '../../../contexts/AuthContext';
 //import { AppContext } from '../../../contexts/AppContext';
 
-const AddProjects = ( {modal}) => {
+const AddMeetings = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
     //const [companyData, setCompanyDatea] = useContext(AppContext);
 
@@ -29,9 +29,6 @@ const AddProjects = ( {modal}) => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false); // optional
-  const navigate = useNavigate();
-  //console.log(user?.id)
-  //console.log(companyId)
   
 
   const handleChange = (e) => {
@@ -91,10 +88,7 @@ const AddProjects = ( {modal}) => {
         // Reset errors
         setErrors({});
         console.log('Project created successfully');
-        // Add a slight delay before redirecting to ensure UI updates
-        // setTimeout(() => {
-        //   navigate('/users');
-        // }, 100);
+
   
       } catch (err) {
         setLoading(false);
@@ -116,36 +110,37 @@ const AddProjects = ( {modal}) => {
   return (
     <>
       <form className='form' onSubmit={handleSubmit}>
-        <h4>Create New Project</h4>
-        <p>Add a new project to your tracker. Click save when you're done.</p>
+        <h4>Create New Meeting</h4>
+        <p>Add a new meeting for your team. Click save when you're done.</p>
+        
 
-        <div className="form-el">
+        <div className="form-el-200">
           <InputField
-            label="Project Name"
-            name="name"
+            label="Meeting Title"
+            name="mtilte"
             type="text"
             value={form.name}
             onChange={handleChange}
-            placeholder="Enter project name"
+            placeholder="Enter meeting title"
             error={errors.name}
           />
 
           <InputField
-            label="Description"
-            name="description"
-            type="text"
+            label="Meeting Date"
+            name="mdate"
+            type="date"
             value={form.description}
             onChange={handleChange}
-            placeholder="Enter project description"
+            placeholder="dd/mm/yyyy"
             error={errors.description}
           />
         </div>
 
         <div className="form-el">
           <InputField
-            label="Start Date"
+            label="Start Time"
             name="sdate"
-            type="date"
+            type="time"
             value={form.sdate}
             onChange={handleChange}
             placeholder="Select start date"
@@ -153,9 +148,9 @@ const AddProjects = ( {modal}) => {
           />
 
         <InputField
-            label="End Date"
+            label="End Time"
             name="edate"
-            type="date"
+            type="time"
             value={form.edate}
             onChange={handleChange}
             placeholder="Select end date"
@@ -165,7 +160,15 @@ const AddProjects = ( {modal}) => {
 
         <div className="form-el">
           <DropdownField
-            label="Select your Team"
+            label="Meeting Type"
+            name="team"
+            value={form.team}
+            onChange={handleChange}
+            options={roles}
+            error={errors.team}
+          />
+          <DropdownField
+            label="Platform"
             name="team"
             value={form.team}
             onChange={handleChange}
@@ -173,16 +176,20 @@ const AddProjects = ( {modal}) => {
             error={errors.team}
           />
 
-          <InputField
-            label="Budget"
+        </div>
+        <div className="form-el-200">
+        <InputField
+            label="Meeting Link"
             name="budget"
-            type="number"
+            type="link"
             value={form.budget}
             onChange={handleChange}
-            placeholder="Enter project budget"
+            placeholder="Enter meeting link"
             error={errors.budget}
           />
         </div>
+
+
     <div className="row-flex-left">
         <Button value={loading ? 'Submitting...' : 'Create Project'} type={"btn-primary"} />
 
@@ -193,4 +200,4 @@ const AddProjects = ( {modal}) => {
   );
 };
 
-export default AddProjects;
+export default AddMeetings;

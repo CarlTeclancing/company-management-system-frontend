@@ -126,7 +126,7 @@ const AddClient = ( {modal}) => {
         <h2>Add New Client</h2>
         <p>Add a new client to your system. Fill in the client details below.</p>
 
-        <div className="form-el">
+        <div className="form-el-200">
           <InputField
             label="Client Name"
             name="name"
