@@ -1,22 +1,23 @@
 import React from 'react'
 
-function Meetings() {
+function Meeting() {
   return (
-    <div className='row'>
-        <h2>Meeting List</h2>
-        <p>View of all scheduled meetings</p>
-        <table>
-                <tr>
-                    <th>Meetings</th>
-                    <th>Date & Time</th>
-                    <th>Platform</th>
-                    <th>Participants</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-        </table>
-    </div>
+
+
+          <table className='table'>
+                  <tr>
+                      <th>Meetings</th>
+                      <th>Date & Time</th>
+                      <th>Platform</th>
+                      <th>Participants</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                  </tr>
+          </table>
+      
+    
+
   )
 }
 
-export default Meetings
+export default Meeting

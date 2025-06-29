@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '../../components/layout/Layout'
 import AddButton from '../../components/common/AddButton'
 import AddMeetings from '../../components/dashboard/meetingComponents/AddMeeting';
+import Meeting from '../../components/dashboard/meetingComponents/Meetings';
 
 function Meetings() {
   const [activeModal, setActiveModal] = React.useState(false);
@@ -12,9 +13,9 @@ function Meetings() {
             <AddButton type={"btn-primary"} value={"Add Meeting"} onClick={()=>setActiveModal(true)} />
         </div>
         <div className="row">
-            <h2>All Meetings</h2>
+          <p></p>
             {/* Here you can add a component to display all meetings */}
-            <Meetings/>
+           <Meeting />
         </div>
         <div className={activeModal == true ?"form-container-overlay":"none"}>
             <i className="bi bi-x" id='close' onClick={()=>setActiveModal(false)}></i>

@@ -18,12 +18,13 @@ const AddMeetings = ( {modal}) => {
       companyId,
     } = useAuth();
   const [form, setForm] = useState({
-    name: '',
-    description: '',
-    sdate: '',
-    edate: '',
-    team: '',
-    budget: '',
+    title: '',
+    date: '',
+    startTime: '',
+    endTime: '',
+    meetingType: '',
+    platform: '',
+    meetingLink: '',
     
   });
 
@@ -43,47 +44,51 @@ const AddMeetings = ( {modal}) => {
     const company_id = parseInt(companyId);
     const user_id = parseInt(user?.id);
   
-    if (!form.name) newErrors.name = 'Name is required';
-    if (!form.description) newErrors.description = 'Description is required';
-    if (!form.sdate) newErrors.sdate = 'Start date is required';
-    if (!form.edate) newErrors.edate = 'End date is required';
-    if (!form.team) newErrors.team = 'Team is required';
-    if (!form.budget) newErrors.budget = 'Budget is required';
+    if (!form.title) newErrors.title = 'Title is required';
+    if (!form.date) newErrors.date = 'Date is required';
+    if (!form.startTime) newErrors.startTime = 'Start Time is required';
+    if (!form.endTime) newErrors.endTime = 'End Time is required';
+    if (!form.meetingType) newErrors.meetingType = 'Meeting Type is required';
+    if (!form.platform) newErrors.platform = 'platform is required';
+    if (!form.meetingLink) newErrors.meetingLink = 'Meeting Link is required';
   
     setErrors(newErrors);
   
     if (Object.keys(newErrors).length === 0) {
       const {
-        name,
-        description,
-        sdate,
-        edate,
-        team,
-        budget,
+        title,
+        date,
+        startTime,
+        endTime,
+        meetingType,
+        platform,
+        meetingLink,
       } = form;
   
       try {
         setLoading(true);
   
         await axios.post('http://localhost:5000/v1/api/projects/', {
-          name,
-          description,
-          sdate,
-          edate,
-          team,
-          budget,
+          title,
+          date,
+          startTime,
+          endTime,
+          meetingType,
+          platform,
+          meetingLink,
           user_id,
           company_id,
         });
         setLoading(false);
         // Reset the form
         setForm({
-          name: '',
-          description: '',
-          sdate: '',
-          edate: '',
-          team: '',
-          budget: '',
+          title: '',
+          date: '',
+          startTime: '',
+          endTime: '',
+          meetingType: '',
+          platform: '',
+          meetingLink: '',
         });
         // Reset errors
         setErrors({});
@@ -117,75 +122,75 @@ const AddMeetings = ( {modal}) => {
         <div className="form-el-200">
           <InputField
             label="Meeting Title"
-            name="mtilte"
+            name="tilte"
             type="text"
-            value={form.name}
+            value={form.title}
             onChange={handleChange}
             placeholder="Enter meeting title"
-            error={errors.name}
+            error={errors.title}
           />
 
           <InputField
             label="Meeting Date"
-            name="mdate"
+            name="date"
             type="date"
-            value={form.description}
+            value={form.date}
             onChange={handleChange}
             placeholder="dd/mm/yyyy"
-            error={errors.description}
+            error={errors.date}
           />
         </div>
 
         <div className="form-el">
           <InputField
             label="Start Time"
-            name="sdate"
+            name="startTime"
             type="time"
-            value={form.sdate}
+            value={form.startTime}
             onChange={handleChange}
-            placeholder="Select start date"
-            error={errors.sdate}
+            placeholder="Select start time"
+            error={errors.startTime}
           />
 
         <InputField
             label="End Time"
-            name="edate"
+            name="endTime"
             type="time"
-            value={form.edate}
+            value={form.endTime}
             onChange={handleChange}
-            placeholder="Select end date"
-            error={errors.edate}
+            placeholder="Select end time"
+            error={errors.endTime}
           />
         </div>
 
         <div className="form-el">
           <DropdownField
             label="Meeting Type"
-            name="team"
-            value={form.team}
+            name="meetingType"
+            value={form.meetingType}
             onChange={handleChange}
             options={roles}
-            error={errors.team}
+            error={errors.meetingType}
           />
           <DropdownField
             label="Platform"
-            name="team"
-            value={form.team}
+            name="platform"
+            value={form.platform}
             onChange={handleChange}
             options={roles}
-            error={errors.team}
+            error={errors.platform}
           />
 
         </div>
         <div className="form-el-200">
         <InputField
             label="Meeting Link"
-            name="budget"
+            name="meetingLink"
             type="link"
-            value={form.budget}
+            value={form.meetingLink}
             onChange={handleChange}
             placeholder="Enter meeting link"
-            error={errors.budget}
+            error={errors.meetingLink}
           />
         </div>
 
