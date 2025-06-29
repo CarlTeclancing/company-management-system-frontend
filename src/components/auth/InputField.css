@@ -48,7 +48,7 @@
   }
   
   .dropdown-field select.error {
-    border-color: grey;
+    border-color: rgba(128, 128, 128, 0.626);
   }
   
   .error-message {

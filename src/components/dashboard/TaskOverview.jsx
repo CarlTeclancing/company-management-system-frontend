@@ -10,6 +10,8 @@ import {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function TaskOverview({chartData}) {
+
+    // param example chartData = [12, 5, 3] 
   const data = {
     labels: ['Complete', 'Pending', 'Not Start'],
     datasets: [

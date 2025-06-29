@@ -3,7 +3,7 @@ import check from '../../assets/icons/check.png'
 import pending from '../../assets/icons/notchecked.png'
 import inprogress from '../../assets/icons/progress.png'
 
-function RecentTask() {
+function RecentTask(status) {
   return (
     <div className="recent-task">
     <div className="active-task">

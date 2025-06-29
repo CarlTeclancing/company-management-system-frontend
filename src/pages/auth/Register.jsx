@@ -12,9 +12,9 @@ import { AppContext } from '../../contexts/AppContext';
 const Register = () => {
   
   //GET compay id from context
-   const {companyData} = React.useContext(AppContext);
-   const companyId = companyData?.id;
-   console.log('Company ID:', companyId);
+  const {companyData} = React.useContext(AppContext);
+  const companyId = companyData?.id;
+  console.log('Company ID:', companyId);
 
 
   const [form, setForm] = useState({

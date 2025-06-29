@@ -7,28 +7,6 @@ const statusColors = {
   'At Risk': 'at-risk',
   'Completed': 'completed',
 };
-const projects = [
-    {
-      name: 'Website Redesign',
-      status: 'On Track',
-      progress: 75,
-    },
-    {
-      name: 'Mobile App Development',
-      status: 'Delayed',
-      progress: 45,
-    },
-    {
-      name: 'CRM Integration',
-      status: 'At Risk',
-      progress: 30,
-    },
-    {
-      name: 'CRM Integration',
-      status: 'Completed',
-      progress: 100,
-    },
-  ];
 
 const ProjectStatus = ({ projects }) => {
   return (
