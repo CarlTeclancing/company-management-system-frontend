@@ -126,7 +126,7 @@ const AddUser = ( {modal}) => {
         <h2>Create an a User Account</h2>
         <p>Enter user information to create a account</p>
 
-        <div className="form-el">
+        <div className="form-el-200">
           <InputField
             label="Full Name"
             name="name"
@@ -148,7 +148,7 @@ const AddUser = ( {modal}) => {
           />
         </div>
 
-        <div className="form-el">
+        <div className="form-el-200">
           <InputField
             label="Password"
             name="password"
@@ -159,15 +159,6 @@ const AddUser = ( {modal}) => {
             error={errors.password}
           />
 
-          <InputField
-            label="Phone Number"
-            name="number"
-            type="text"
-            value={form.number}
-            onChange={handleChange}
-            placeholder="Enter your number"
-            error={errors.number}
-          />
         </div>
 
         <div className="form-el">
@@ -192,6 +183,15 @@ const AddUser = ( {modal}) => {
         </div>
 
         <div className="form-el">
+        <InputField
+            label="Phone Number"
+            name="number"
+            type="text"
+            value={form.number}
+            onChange={handleChange}
+            placeholder="Enter your number"
+            error={errors.number}
+          />
           <InputField
             label="Address"
             name="address"
