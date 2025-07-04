@@ -43,7 +43,7 @@ function Dashbaord() {
                 <AddButton value={"Add Widget"} type={"btn-primary"} />
                 </>
             </div>
-            <div className="row">
+            <div className="row-narrow">
                 <Widget title={"Task"} value={"12"} valueUp={12} message={'uncompleted task'} />
                 <Widget title={"Projects"} value={"9"} valueUp={4} message={'uncompleted Projects'} />
                 <Widget title={"Inventory"} value={"120"} valueUp={16} message={'Missing itens Low stock'} />

@@ -7,6 +7,9 @@ import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
 
 const Login = () => {
+
+  const APIURL = import.meta.env.API_URL;
+  console.log('API URL:', APIURL);
   const [form, setForm] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -67,7 +70,7 @@ const Login = () => {
       try {
         setLoading(true);
         const response = await axios.post(
-          'http://localhost:5000/v1/api/auth/login',
+          `${APIURL}/login`,
           {
             email: form.email,
             password: form.password,

@@ -231,14 +231,14 @@
 /* widjet.jsx and  */
 
 .widget{
-    width: 310px;
+    width: 21%;
     height: 200px;
     padding: 10px;
     border: 1px solid var(--border-color);
     border-radius: 16px;
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin-left: 6px;
 }
 .widget-row, .widget-footer{
     width: 100%;

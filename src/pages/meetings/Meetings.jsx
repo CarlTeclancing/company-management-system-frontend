@@ -20,7 +20,6 @@ function Meetings() {
         <div className={activeModal == true ?"form-container-overlay":"none"}>
             <i className="bi bi-x" id='close' onClick={()=>setActiveModal(false)}></i>
             {activeModal == true? <AddMeetings />:""}
-
         </div>
     </Layout>
   )
