@@ -5,11 +5,11 @@ import Button from '../../components/common/button';
 import logo from '../../assets/images/logo.svg';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
+import AUTHURL from '../../../globals';
+
 
 const Login = () => {
 
-  const APIURL = import.meta.env.API_URL;
-  console.log('API URL:', APIURL);
   const [form, setForm] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -70,7 +70,7 @@ const Login = () => {
       try {
         setLoading(true);
         const response = await axios.post(
-          `${APIURL}/login`,
+          `${AUTHURL}`,
           {
             email: form.email,
             password: form.password,
