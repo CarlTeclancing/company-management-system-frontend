@@ -9,6 +9,11 @@ import { AppContext } from '../../contexts/AppContext';
 import { useAuth } from '../../contexts/AuthContext';
 import Layout from '../../components/layout/Layout';
 
+
+//getting usere end points
+import { USERS } from '../../../globals';
+
+
 const EditUser = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
     const location = useLocation();
@@ -80,7 +85,7 @@ const EditUser = ( {modal}) => {
 
       try {
         setLoading(true);
-        await axios.post('http://localhost:5000/v1/api/users/', {
+        await axios.put(`${USERS}`, {
           name,
           email,
           password,

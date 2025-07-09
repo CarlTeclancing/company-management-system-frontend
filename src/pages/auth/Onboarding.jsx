@@ -8,6 +8,9 @@ import './auth.css';
 import axios from 'axios';
 import { AppContext } from '../../contexts/AppContext';
 
+//endpoint url import
+import { COMPANY } from '../../../globals';
+
 const Onboarding = () => {
 
   const {companyData, setCompanyData} = React.useContext(AppContext);
@@ -50,7 +53,7 @@ const Onboarding = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         setLoading(true);
-        const response = await axios.post('http://localhost:5000/v1/api/company', form);
+        const response = await axios.post(`${COMPANY}`, form);
         //console.log('Company created:', response.data);
 
         // Save to localStorage

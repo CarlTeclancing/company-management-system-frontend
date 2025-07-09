@@ -9,6 +9,12 @@ import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
 import { AppContext } from '../../contexts/AppContext';
 
+
+//importing the endpoint url
+
+import { REGISTER } from '../../../globals';
+
+
 const Register = () => {
   
   //GET compay id from context
@@ -72,7 +78,7 @@ const Register = () => {
       
       try {
         setLoading(true);
-        await axios.post('http://localhost:5000/v1/api/auth/register', {
+        await axios.post(`${REGISTER}`, {
           name,
           email,
           password,
@@ -180,15 +186,13 @@ const Register = () => {
             error={errors.address}
           />
         </div>
-
+<hr /><hr /><hr />
         <Button value={loading ? 'Submitting...' : 'Sign Up'} type={"btn-primary-100"} />
-
-        <Link className='m-10' to='/login'>
+<hr /><hr />
+        <Link className='m-10 btn-secondary-100' to='/login'>
           Already have an account?
         </Link>
-        <Link className='m-10' to='/onboarding'>
-          Company information
-        </Link>
+
       </form>
     </div>
   );

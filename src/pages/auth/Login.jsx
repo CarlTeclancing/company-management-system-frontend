@@ -5,7 +5,7 @@ import Button from '../../components/common/button';
 import logo from '../../assets/images/logo.svg';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
-import AUTHURL from '../../../globals';
+import { LOGIN } from '../../../globals';
 
 
 const Login = () => {
@@ -70,7 +70,7 @@ const Login = () => {
       try {
         setLoading(true);
         const response = await axios.post(
-          `${AUTHURL}`,
+          `${LOGIN}`,
           {
             email: form.email,
             password: form.password,
@@ -137,7 +137,7 @@ const Login = () => {
         <hr />
 
         <Link to="/forgot-password">Forgot Password</Link>
-        <Link className="btn-secondary-100" to="/register">
+        <Link className="btn-secondary-100" to="/onboarding">
           Don’t have an account?
         </Link>
       </form>

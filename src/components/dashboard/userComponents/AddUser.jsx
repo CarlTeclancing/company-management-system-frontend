@@ -8,6 +8,9 @@ import DropdownField from '../../auth/DropDownField';
 import { AppContext } from '../../../contexts/AppContext';
 import { useAuth } from '../../../contexts/AuthContext';
 
+//user end point 
+import { USERS } from '../../../../globals';
+
 const AddUser = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
 
@@ -77,7 +80,7 @@ const AddUser = ( {modal}) => {
 
       try {
         setLoading(true);
-        await axios.post('http://localhost:5000/v1/api/users/', {
+        await axios.post(`${USERS}`, {
           name,
           email,
           password,

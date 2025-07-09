@@ -5,6 +5,10 @@ import { AppContext } from '../../../contexts/AppContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 
+
+//user end point
+import { COMPANY } from '../../../../globals';
+
 function UserList() {
   const { users, setUsers } = useContext(AppContext);
   const { user, companyId } = useAuth();
@@ -46,7 +50,7 @@ function UserList() {
 
     const getUserById = async (id) => {
       try {
-        const response = await axios.get(`http://localhost:5000/v1/api/company/${id}`);
+        const response = await axios.get(`${COMPANY}/${id}`);
         setUsers(response.data);
         console.log('Fetched users:', response.data);
       } catch (error) {

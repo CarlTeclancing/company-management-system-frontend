@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { USERS } from '../../../globals';
 
 function DeleteUser() {
   const location = useLocation();
@@ -10,7 +11,7 @@ function DeleteUser() {
   useEffect(() => {
     const deleteUser = async (userId) => {
       try {
-        const response = await axios.delete(`http://localhost:5000/v1/api/users/${userId}`)
+        const response = await axios.delete(`${USERS}/${userId}`)
         .then(res => {
             console.log('Deleted:', response.data);
     
