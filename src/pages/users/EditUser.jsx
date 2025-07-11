@@ -130,11 +130,10 @@ const EditUser = ( {modal}) => {
   return (
 
     <Layout>
-      <div className="row">
-      <>
-      <form className='form' onSubmit={handleSubmit}>
+      <div className="row-narrow">
+      <form className='form m-10' onSubmit={handleSubmit}>
         
-        <h2>Edit User Account</h2>
+        <h2>Edit User Information</h2>
         <p>Enter user information to update a account</p>
 
         <div className="form-el">
@@ -159,16 +158,8 @@ const EditUser = ( {modal}) => {
           />
         </div>
 
-        <div className="form-el">
-          <InputField
-            label="Password"
-            name="password"
-            type="password"
-            value={form.password}
-            onChange={handleChange}
-            placeholder="Enter your password"
-            error={errors.password}
-          />
+        <div className="form-el-100">
+
 
           <InputField
             label="Phone Number"
@@ -202,7 +193,7 @@ const EditUser = ( {modal}) => {
           />
         </div>
 
-        <div className="form-el">
+        <div className="form-el-100">
           <InputField
             label="Address"
             name="address"
@@ -213,13 +204,47 @@ const EditUser = ( {modal}) => {
             error={errors.address}
           />
         </div>
+        <hr /><hr />
       <div className="row-flex-left">
-        <Button value={loading ? 'Submitting...' : 'Edit  User'} type={"btn-primary"}  />
+        <Button value={loading ? 'Submitting...' : 'Update  User info'} type={"btn-primary-100"}  />
       </div>
         
 
       </form>
-    </>
+
+      <form className='form'>
+        <h2>Update User Password</h2>
+        <p>Enter new passord to update it</p>
+        <hr />
+        <div className="form-el-100">
+          <InputField
+            label="New Password"
+            name="password"
+            type="password"
+            value={form.password}
+            onChange={handleChange}
+            placeholder="Enter your password"
+            error={errors.password}
+          />
+        </div>
+
+        <div className="form-el-100">
+          <InputField
+            label="Confirm New Password"
+            name="password"
+            type="password"
+            value={form.password}
+            onChange={handleChange}
+            placeholder="Enter your password"
+            error={errors.password}
+          />
+        </div>
+        <hr /><hr />
+      <div className="row-flex-left">
+        <Button value={loading ? 'Submitting...' : 'Update  User Password'} type={"btn-primary-100"}  />
+      </div>
+      </form>
+    
       </div>
 
     </Layout>

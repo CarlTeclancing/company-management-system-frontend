@@ -108,9 +108,6 @@ function UserList() {
                   >
                     <li><i class="bi bi-trash"></i> Delete</li>
                   </Link>
-                  <Link to={`/users/view/${u.id}`}>
-                    <li><i class="bi bi-eye"></i> View</li>
-                  </Link>
                 </ul>
               </div>
             </td>
