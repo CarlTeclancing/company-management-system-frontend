@@ -7,15 +7,7 @@ function TopBar( {logout}) {
   return (
     <div className='top-nav'>
         <div className='w-50'></div>
-        <InputField
-            label=""
-            name="search"
-            type="text"
-            value={""}
-            onChange={"typpping"}
-            placeholder="Enter search tearm"
-            error={""}
-        />
+        <input type="search" name="search" placeholder='Enter Seach term' id="" className="w-10" />
         <div className='profile-notification'>
             <img src={notificationIcon} alt="" />
 

@@ -51,16 +51,16 @@ const AllProjects = () => {
                       to={`/projects/edit/${project.id}`}
                       state={project}
                       >
-                      <li><i class="bi bi-pencil-square"></i> Edit</li>
+                      <li>Edit</li>
                     </Link>
                     <Link 
                     to={`/projects/delete/${project.id}`}
                     state={project}
                     >
-                      <li><i class="bi bi-trash"></i> Delete</li>
+                      <li>Delete</li>
                     </Link>
                     <Link to={`/projects/view/${project.id}`}>
-                      <li><i class="bi bi-eye"></i> View</li>
+                      <li>Change Status</li>
                     </Link>
                   </ul>
                 </div>
