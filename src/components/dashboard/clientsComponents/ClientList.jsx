@@ -45,6 +45,7 @@ const ClientList = () => {
    <table>
   <thead>
     <tr>
+      <th></th>
       <th>Client Name</th>
       <th>Email</th>
       <th>Number</th>
@@ -59,11 +60,12 @@ const ClientList = () => {
       <br />
     
       <tr key={client.id}>
+        <td><i class="bi bi-people"></i></td>
         <td>{client.name}</td>
         <td>{client.email}</td>
         <td>{client.number}</td>
         <td>{client.address}</td>
-        <td><i className="bi bi-envelope"></i></td>
+        <td><i className="bi bi-envelope"></i> </td>
         <td className='drop'>
           <i className="bi bi-three-dots"></i>
           <div className="drop-down">
