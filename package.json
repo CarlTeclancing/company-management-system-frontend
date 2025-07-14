@@ -13,6 +13,7 @@
     "axios": "^1.9.0",
     "bootstrap-icons": "^1.12.1",
     "chart.js": "^4.4.9",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.6.1",
     "env": "^0.0.2",
     "react": "^19.0.0",

@@ -8,6 +8,9 @@ import DropdownField from '../../auth/DropDownField';
 import { AppContext } from '../../../contexts/AppContext';
 import { useAuth } from '../../../contexts/AuthContext';
 
+//GET CLIENT API RUL
+import { CLIENTS } from '../../../../globals';
+
 const AddClient = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
 
@@ -19,30 +22,13 @@ const AddClient = ( {modal}) => {
         isLoggedIn,
         setIsLoggedIn
       } = useAuth();
-
-      console.log('User:', user);
-      // useEffect(() => {
-      //   //console.log('Raw user:', user);
       
-      //   // Check if it's a string
-      //   if (typeof user === 'string') {
-      //     const parsedUser = JSON.parse(user);
-      //     console.log('Parsed Company ID:', parsedUser.company_id);
-          
-      //   } else {
-      //     console.log('Company ID:', user?.company_id);
-      //   }
-      // }, [user]);
-
 
   const [form, setForm] = useState({
     name: '',
     email: '',
-    password: '',
     number: '',
-    country: '',
     address: '',
-    role: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -64,24 +50,20 @@ const AddClient = ( {modal}) => {
 
     if (!form.name) newErrors.name = 'Name is required';
     if (!form.email) newErrors.email = 'Email is required';
-    if (!form.password) newErrors.password = 'Password is required';
     if (!form.number) newErrors.number = 'Number is required';
-    if (!form.country) newErrors.country = 'Country is required';
     if (!form.address) newErrors.address = 'Address is required';
-    if (!form.role) newErrors.role = 'Role is required';
+
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      const { name, email, password, number, address, role } = form;
+      const { name, email, number, address } = form;
 
       try {
         setLoading(true);
-        await axios.post('http://localhost:5000/v1/api/users/', {
+        await axios.post(`${CLIENTS}`, {
           name,
           email,
-          password,
-          role,
           number,
           address,
           companyId,
@@ -91,31 +73,22 @@ const AddClient = ( {modal}) => {
       setForm({
         name: '',
         email: '',
-        password: '',
         number: '',
-        country: '',
         address: '',
-        role: '',
       });
 
       // clear errors too
       setErrors({});
         
-        navigate('/users'); // ✅ correct redirect
+        navigate('/clients'); // ✅ correct redirect
       } catch (err) {
         setLoading(false);
         console.error('Error:', err.response?.data || err.message);
         console.error(err);
-        console.log('Registration failed: ' + (err.response?.data?.message || 'Unknown error'));
+        console.log('failed to create client: ' + (err.response?.data?.message || 'Unknown error'));
       }
     }
   };
-
-  const roles = [
-    { label: 'Admin', value: 'admin' },
-    { label: 'User', value: 'user' },
-    { label: 'Guest', value: 'guest' },
-  ];
 
  
 

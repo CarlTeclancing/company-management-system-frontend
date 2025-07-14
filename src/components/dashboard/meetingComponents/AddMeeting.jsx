@@ -9,6 +9,9 @@ import DropdownField from '../../auth/DropDownField';
 import { useAuth } from '../../../contexts/AuthContext';
 //import { AppContext } from '../../../contexts/AppContext';
 
+//GET CLIENT API RUL
+import { CLIENTS } from '../../../../globals';
+
 const AddMeetings = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
     //const [companyData, setCompanyDatea] = useContext(AppContext);
@@ -68,7 +71,7 @@ const AddMeetings = ( {modal}) => {
       try {
         setLoading(true);
   
-        await axios.post('http://localhost:5000/v1/api/projects/', {
+        await axios.post(`${CLIENTS}`, {
           title,
           date,
           startTime,
