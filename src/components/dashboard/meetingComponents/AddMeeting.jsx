@@ -7,10 +7,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DropdownField from '../../auth/DropDownField';
 import { useAuth } from '../../../contexts/AuthContext';
+import { MEETINGS } from '../../../../globals';
 //import { AppContext } from '../../../contexts/AppContext';
 
-//GET CLIENT API RUL
-import { CLIENTS } from '../../../../globals';
+
 
 const AddMeetings = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
@@ -71,7 +71,7 @@ const AddMeetings = ( {modal}) => {
       try {
         setLoading(true);
   
-        await axios.post(`${CLIENTS}`, {
+        await axios.post(`${MEETINGS}`, {
           title,
           date,
           startTime,
@@ -95,7 +95,7 @@ const AddMeetings = ( {modal}) => {
         });
         // Reset errors
         setErrors({});
-        console.log('Project created successfully');
+        console.log('Meeting created successfully');
 
   
       } catch (err) {
@@ -107,10 +107,17 @@ const AddMeetings = ( {modal}) => {
   };
   
 
-  const roles = [
-    { label: 'Admin', value: 'admin' },
-    { label: 'User', value: 'user' },
-    { label: 'Guest', value: 'guest' },
+  const MeetingData = [
+    { label: 'Sprint', value: 'sprint' },
+    { label: 'Checkings', value: 'checkings' },
+    { label: 'Review', value: 'review' },
+  ];
+  const platformData = [
+    { label: 'Goodle Meet', value: 'Goodle Meet' },
+    { label: 'Zoom', value: 'Zoom' },
+    { label: 'Microsoft Teams', value: 'Microsoft Teams' },
+    { label: 'Skype', value: 'Skype' },
+    { label: 'Others', value: 'Others' },
   ];
 
  
@@ -125,7 +132,7 @@ const AddMeetings = ( {modal}) => {
         <div className="form-el-200">
           <InputField
             label="Meeting Title"
-            name="tilte"
+            name="title"
             type="text"
             value={form.title}
             onChange={handleChange}
@@ -172,7 +179,7 @@ const AddMeetings = ( {modal}) => {
             name="meetingType"
             value={form.meetingType}
             onChange={handleChange}
-            options={roles}
+            options={MeetingData}
             error={errors.meetingType}
           />
           <DropdownField
@@ -180,7 +187,7 @@ const AddMeetings = ( {modal}) => {
             name="platform"
             value={form.platform}
             onChange={handleChange}
-            options={roles}
+            options={platformData}
             error={errors.platform}
           />
 

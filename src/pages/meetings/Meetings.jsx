@@ -8,7 +8,7 @@ function Meetings() {
   const [activeModal, setActiveModal] = React.useState(false);
   return (
     <Layout>
-        <div className="container-2">
+        <div className="row">
             <h1>Meetings</h1>
             <AddButton type={"btn-primary"} value={"Add Meeting"} onClick={()=>setActiveModal(true)} />
         </div>
