@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@talkjs/react": "^0.1.11",
     "axios": "^1.9.0",
     "bootstrap-icons": "^1.12.1",
     "chart.js": "^4.4.9",
@@ -19,7 +20,8 @@
     "react": "^19.0.0",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.5.3"
+    "react-router-dom": "^7.5.3",
+    "talkjs": "^0.38.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

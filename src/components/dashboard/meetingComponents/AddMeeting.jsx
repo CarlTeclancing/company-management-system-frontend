@@ -132,7 +132,7 @@ const AddMeetings = ( {modal}) => {
         <div className="form-el-200">
           <InputField
             label="Meeting Title"
-            name="tilte"
+            name="title"
             type="text"
             value={form.title}
             onChange={handleChange}

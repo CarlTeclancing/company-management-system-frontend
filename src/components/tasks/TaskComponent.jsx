@@ -6,16 +6,16 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { TASKS } from '../../../globals';
 import { useAuth } from '../../contexts/AuthContext';
-import { Navigate } from 'react-router-dom';
 
 function TaskComponent({ status }) {
   const { companyId } = useAuth();
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorFetching, setErrorFetching] = useState('');
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [isLoadingMore, setIsLoadingMore] = useState(false); // ⬅️ Added this
 
   useEffect(() => {
-    const id = companyId;
     const getTaskById = async (id) => {
       try {
         const response = await axios.get(`${TASKS}/${id}`);
@@ -29,8 +29,18 @@ function TaskComponent({ status }) {
       }
     };
 
-    getTaskById(id);
-  }, []);
+    if (companyId) {
+      getTaskById(companyId);
+    }
+  }, [companyId]);
+
+  const handleViewMore = () => {
+    setIsLoadingMore(true); // Start transition
+    setTimeout(() => {
+      setVisibleCount((prevCount) => prevCount + 5);
+      setIsLoadingMore(false); // End transition
+    }, 1000); // Delay for animation (optional)
+  };
 
   const getStatusIcon = (status) => {
     switch (status) {
@@ -44,12 +54,12 @@ function TaskComponent({ status }) {
     }
   };
 
-  // if (errorFetching) return <p>Error fetching tasks: {errorFetching}</p>;
-  // if (isLoading) return <p>Loading tasks...</p>;
+  if (errorFetching) return <p>Error fetching tasks: {errorFetching}</p>;
+  if (isLoading) return <p>Loading tasks...</p>;
 
   return (
     <>
-      {tasks.map((u) => (
+      {tasks.slice(0, visibleCount).map((u) => (
         <div className="recent-task" key={u.id}>
           <div className="active-task">
             <div className="row-narrow-p0">
@@ -95,6 +105,22 @@ function TaskComponent({ status }) {
           </div>
         </div>
       ))}
+
+      {/* View More Section */}
+      {visibleCount < tasks.length && (
+        <div className="text-center mt-4">
+          {isLoadingMore ? (
+            <p className="text-sm text-gray-600">Loading more tasks...</p>
+          ) : (
+            <button
+              onClick={handleViewMore}
+              className="btn-secondary"
+            >
+              View More
+            </button>
+          )}
+        </div>
+      )}
     </>
   );
 }

@@ -15,6 +15,7 @@ function SideBar() {
         </div>
 
     <>
+    <span className="m-100">General</span>
         <Link 
             
             className={location.pathname == "/dashboard" ?"side-link-active":"side-link"} 
@@ -23,6 +24,15 @@ function SideBar() {
             >
             <i class="bi bi-house"></i> 
             <span>Dashbaord</span>
+        </Link>
+        <Link 
+            
+            className={location.pathname == "/" ?"side-link-active":"side-link"} 
+            to={'/dashboard'}
+            
+            >
+            <i class="bi bi-openai"></i>
+            <span>Projina AI</span>
         </Link>
         <span className="m-100">USer Management</span>
         <Link 
