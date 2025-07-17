@@ -1,5 +1,5 @@
 import React from 'react'
-import './common.css'
+import './common.css' 
 import arrow from '../../assets/icons/arrow-45.png'
 
 function Widget( {title, value, valueUp, message}) {

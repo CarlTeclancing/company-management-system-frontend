@@ -17,31 +17,7 @@ function UserList() {
   const [errorFetching, setErrorFetching] = useState('');
 
   useEffect(() => {
-    // const storedUser = localStorage.getItem('user');
-    // if (!storedUser) {
-    //   console.warn('No user found in localStorage');
-    //   setIsLoading(false);
-    //   return;
-    // }
 
-    // let parsedUser;
-    // try {
-    //   parsedUser = JSON.parse(storedUser);
-    //   console.log('Parsed User:', parsedUser);
-    // } catch (error) {
-    //   console.error('Error parsing user from localStorage:', error);
-    //   setIsLoading(false);
-    //   return;
-    // }
-
-    // const companyId = parsedUser?.company_id;
-
-    // if (companyId === undefined || companyId === null || isNaN(Number(companyId))) {
-    //   console.warn('Invalid company_id in parsed user object:', companyId);
-    //   setErrorFetching('User has invalid or missing company ID.');
-    //   setIsLoading(false);
-    //   return;
-    // }
 
     const id = companyId;
     console.log(id)

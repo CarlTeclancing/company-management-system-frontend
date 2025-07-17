@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, addMonths, subMonths, isSameMonth, isSameDay } from "date-fns";
 import axios from "axios";
 import "./calender.css";
+import { MEETINGS } from "../../../../globals";
+import { Link } from "react-router-dom";
 
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -11,7 +13,7 @@ const Calendar = () => {
   const [formData, setFormData] = useState({ title: "", description: "" });
 
   useEffect(() => {
-    axios.get("http://localhost:5000/events")
+    axios.get(`${MEETINGS}`)
       .then(res => setEvents(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -105,6 +107,8 @@ const Calendar = () => {
           <div className="event-date">{format(new Date(event.date), "MMM d, yyyy")}</div>
           <div className="event-time">{event.time}</div>
           <div className="event-title">{event.title}</div>
+          <div className="event-title">{event.type}</div>
+          <div className="event-title"><Link to={event.meeting_link} target="_blank">Join Now</Link></div>
         </div>
       ))}
     </div>

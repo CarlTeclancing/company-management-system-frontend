@@ -27,13 +27,16 @@ function Meeting() {
     };
 
     getMeetingsById(id);
-  }, [companyId])
+  }, [companyId]);
+
+  if (isLoading) return <p>Loading Meeting data</p>
+  if (errorFetching) return <p>Error fetching Meeting data</p>
   return (
 
 
           <table className='table'>
                   <tr>
-                      <th>Meetings</th>
+                      <th>Meetings Title</th>
                       <th>Date & Time</th>
                       <th>Platform</th>
                       <th>Participants</th>
@@ -46,9 +49,8 @@ function Meeting() {
                   <>
                     <tr>
                       <td key={meeting.id}>
-                        <span>{meeting.id}</span><br/>
                         <span>{meeting.title}</span>
-                      </td>
+                      </td>   
 
                       <td>
                         <span><i class="bi bi-calendar4-event"></i> {meeting.date}</span><br/>

@@ -93,8 +93,6 @@ const EditUser = ({ modal }) => {
         companyId,
         userId
       });
-
-
       setLoading(false);
 
       setErrors({});
