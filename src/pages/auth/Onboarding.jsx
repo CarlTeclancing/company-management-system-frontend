@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import InputField from '../../components/auth/InputField';
 import DropdownField from '../../components/auth/DropDownField';
 import Button from '../../components/common/button';
@@ -142,7 +142,11 @@ const Onboarding = () => {
           type="btn-primary-100"
           disabled={loading}
         />
+        
         <hr />
+
+       
+        <Link to={'/login'}> <p>Already Have an account Login</p> </Link>
       </form>
     </div>
   );

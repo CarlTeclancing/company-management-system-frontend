@@ -11,7 +11,7 @@
     scroll-behavior: smooth;
 }
 .side-nav::-webkit-scrollbar {
-    display: none;
+    display: block;
   }
   
 .side-link-active{
@@ -82,13 +82,11 @@
     display: flex;
     justify-content: space-between;
     top: 0px;
-    overflow-y: hidden;
+    overflow-y: scroll;
     background-color: none;
     scroll-behavior: smooth;
 }
-.container::-webkit-scrollbar {
-    display: none;
-  }
+
   
 .col{
     width: calc(100% - 20%);
@@ -96,9 +94,11 @@
     flex-direction: column;
     padding: 24px;
     height: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
     margin-bottom: 100px;
 }
+
+  
 .row{
     display: flex;
     padding-top: 24px;

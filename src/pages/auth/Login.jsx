@@ -82,6 +82,7 @@ const Login = () => {
         // Save to localStorage
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(userData));
+        console.log(response.data);
 
         // Update context
         setUser(userData);

@@ -1,31 +1,3 @@
-:root {
-  /* CSS variables */
-   --primary-color: #5B0C4E;
-   --primary-color-hover: #5b0c4edc;
-   --bg-color: #FFFAFE;
-   --bg-white: #ffffff;
-   --text-color: #262626;
-   --border-color: #93B4FD;
-   --bg-tab: #DECADB;
-   
-   --pending: #EA5254;
-   --completed: #3CDA7D;
-   --in-progress: #F9BD3B;
- 
-   --primary-white-color: white;
-   --primary-black-color: black;
-   --primary-error-color: red;
- }
-
-body{
-  background-color: var(--bg-color);
-  font-family: "Poppins", sans-serif;
-  font-style: normal;
-  height: auto;
-  margin: 0;
-  padding: 0;
-}
-
 .chat-app {
     display: flex;
     height: 100vh;
@@ -93,6 +65,19 @@ body{
 
 .message {
     margin-bottom: 10px;
+    background-color: var(--bg-tab);
+    padding: 16px;
+    border-radius: 0px 12px 0px 12px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+.message:nth-child(odd) {
+    margin-bottom: 10px;
+    background-color: var(--border-color);
+    padding: 12px;
+    border-radius: 0px 12px 0px 12px;
+    color: rgb(255, 255, 255);
 }
 
 .message-sender {
@@ -127,4 +112,32 @@ body{
 
 .send-button:hover {
     background-color: var(--primary-color-hover);
+}
+.date-label {
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 6px;
+    color: var(--primary-color);
+}
+
+.message-time {
+    font-size: 0.8rem;
+    color: #000000;
+    white-space: nowrap;
+}
+.load-more-users {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: #2d88ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.load-more-users:hover {
+    background-color: #1c6cd5;
 }

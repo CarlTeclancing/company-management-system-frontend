@@ -31,7 +31,7 @@ function SideBar() {
             to={'/dashboard'}
             
             >
-            <i class="bi bi-openai"></i>
+            <i class="bi bi-vignette"></i>
             <span>Projina AI</span>
         </Link>
         <span className="m-100">USer Management</span>
