@@ -56,4 +56,40 @@
     font-size: 0.875rem;
     margin-top: 0.25rem;
   }
-  
+  .description-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 95%;
+}
+
+.description-field label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.description-field textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+  width: 100%;
+}
+
+.description-field textarea:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.description-field .error {
+  border-color: #e74c3c;
+}
+
+.error-message {
+  font-size: 0.875rem;
+  color: #e74c3c;
+  margin-top: 0.25rem;
+}

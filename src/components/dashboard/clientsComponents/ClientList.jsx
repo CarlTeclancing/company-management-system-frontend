@@ -70,11 +70,11 @@ const ClientList = () => {
           <i className="bi bi-three-dots"></i>
           <div className="drop-down">
             <ul>
-              <Link to={`/clients/edit/${client.id}`} state={1}>
+              <Link to={`/clients/edit/${client.id}`} state={client}>
                 <li><i className="bi bi-pencil-square"></i> Edit</li>
               </Link>
               <br />
-              <Link to={`/clients/delete/${client.id}`} state={1}>
+              <Link to={`/clients/delete/${client.id}`} state={client}>
                 <li><i className="bi bi-trash"></i> Delete</li>
               </Link>
               <br />

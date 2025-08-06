@@ -17,6 +17,8 @@ import Meetings from "../pages/meetings/Meetings";
 import Messages from "../pages/messages/Messages";
 import Invoice from "../pages/invoices/Invoice";
 import EditProjects from "../pages/projects/EditProjects";
+import EditClient from "../pages/client/EditClients";
+import DeleteClient from "../pages/client/DeleteClient";
 
 // Define your router configuration
  const router = createBrowserRouter([
@@ -99,6 +101,14 @@ import EditProjects from "../pages/projects/EditProjects";
   {
     path: '/invoices',
     element: <Invoice/>,
+  },
+  {
+    path: '/clients/edit/:id',
+    element: <EditClient/>,
+  },
+  {
+    path: '/clients/delete/:id',
+    element: <DeleteClient />,
   },
 ]);
 
