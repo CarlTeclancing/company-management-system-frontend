@@ -38,9 +38,12 @@
     background-color: var(--bg-white);
     overflow-y: scroll;
 }
+/*
 .recent-activities::-webkit-scrollbar {
     display: none;
   }
+
+  */
 .recent-task{
     width: 100%;
     height: auto;

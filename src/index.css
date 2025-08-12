@@ -21,7 +21,7 @@ body{
   background-color: var(--bg-color);
   font-family: "Poppins", sans-serif;
   font-style: normal;
-  height: auto;
+  height: 100vh;
   margin: 0;
   padding: 0;
   overflow-y: scroll;

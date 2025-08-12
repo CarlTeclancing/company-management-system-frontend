@@ -67,7 +67,7 @@ function SideBar() {
             <i class="bi bi-receipt"></i>
             <span>Invoices</span>
         </Link>
-        <Link className="side-link" to={'/'}>
+        <Link className={location.pathname == "/inventory" ?"side-link-active":"side-link"} to={'/inventory'}>
             <i class="bi bi-box-seam"></i>
             <span>Inventory</span>
         </Link>

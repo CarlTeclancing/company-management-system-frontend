@@ -1,36 +1,36 @@
 import React from 'react'
+import Layout from '../../layout/Layout'
 import { Link } from 'react-router-dom'
 
-function AllInvoices() {
-    const id = 1;
+const AllInventory = () => {
   return (
-    <>
-    <div>
-        <h2>All Invoice</h2><br />
-        <p>Manage and view all your invoices in one place.</p>
-    </div>
-
-        <table className="table">
+    <table>
+        <thead>
             <tr>
-                <th>Invoice Id</th>
-                <th>Client Name</th>
-                <th>Amount</th>
+                <th>id</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
                 <th>Status</th>
-                <th>Due Date</th>
                 <th>Action</th>
             </tr>
-            <br /><br />
+        </thead>
+        <br /><br />
+
+        <tbody>
             <tr>
-                <td>INV-001</td>
-                <td>John Doe</td>
-                <td>$500.00</td>
-                <td><span className="status paid">Paid</span></td>
-                <td>2025-05-01</td>
+                <td>22323</td>
+                <td>22323</td>
+                <td>22323</td>
+                <td>22323</td>
+                <td>22323</td>
+                <td>22323</td>
                 <td className='drop'>
                     <i className="bi bi-three-dots"></i>
                     <div className="drop-down">
                         <ul>
-                            <Link to={`/invoices/ivoice-details/${id}`}>
+                            <Link>
                                 <li>
                                     <i className="bi bi-eye"></i> View
                                 </li>
@@ -41,10 +41,9 @@ function AllInvoices() {
                     </div>
                 </td>
             </tr>
-        </table>
-
-    </>
+        </tbody>
+    </table>
   )
 }
 
-export default AllInvoices
+export default AllInventory

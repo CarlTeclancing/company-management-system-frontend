@@ -19,6 +19,8 @@ import Invoice from "../pages/invoices/Invoice";
 import EditProjects from "../pages/projects/EditProjects";
 import EditClient from "../pages/client/EditClients";
 import DeleteClient from "../pages/client/DeleteClient";
+import InvoiceDetails from "../pages/invoices/InvoiceDetails";
+import Inventory from "../pages/inventory/Inventory";
 
 // Define your router configuration
  const router = createBrowserRouter([
@@ -109,6 +111,14 @@ import DeleteClient from "../pages/client/DeleteClient";
   {
     path: '/clients/delete/:id',
     element: <DeleteClient />,
+  },
+  {
+    path: '/invoices/ivoice-details/:id',
+    element: <InvoiceDetails />,
+  },
+  {
+    path: '/inventory',
+    element: <Inventory />,
   },
 ]);
 
