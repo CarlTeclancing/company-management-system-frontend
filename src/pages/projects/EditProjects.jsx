@@ -6,6 +6,7 @@ import DropdownField from '../../components/auth/DropDownField';
 import Button from '../../components/common/button';
 import { useAuth } from '../../contexts/AuthContext';
 import Layout from '../../components/layout/Layout';
+import { BASE_URL } from '../../../globals';
 //import { AppContext } from '../../../contexts/AppContext';
 
 const EditProjects = ( id ) => {
@@ -67,7 +68,7 @@ const EditProjects = ( id ) => {
       try {
         setLoading(true);
   
-        await axios.put(`http://localhost:5000/v1/api/projects/${id}`, {
+        await axios.put(`${BASE_URL}/projects/${id}`, {
           name,
           description,
           sdate,

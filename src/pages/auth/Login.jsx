@@ -5,7 +5,7 @@ import Button from '../../components/common/button';
 import logo from '../../assets/images/logo.svg';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
-import { LOGIN } from '../../../globals';
+import {     BASE_URL } from '../../../globals';
 
 
 const Login = () => {
@@ -70,7 +70,7 @@ const Login = () => {
       try {
         setLoading(true);
         const response = await axios.post(
-          `${LOGIN}`,
+          `${    BASE_URL}auth/login`,
           {
             email: form.email,
             password: form.password,

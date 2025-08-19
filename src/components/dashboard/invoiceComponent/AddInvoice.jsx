@@ -8,6 +8,7 @@ import DropdownField from '../../auth/DropDownField';
 import { AppContext } from '../../../contexts/AppContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import DescriptionField from '../../auth/Description';
+import { BASE_URL } from '../../../../globals';
 
 const AddInvoice = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
@@ -57,7 +58,7 @@ const AddInvoice = ( {modal}) => {
 
       try {
         setLoading(true);
-        await axios.post('http://localhost:5000/v1/api/users/', {
+        await axios.post(`${BASE_URL}/invoices`, {
           title,
           description,
           user_id: parseInt(user?.id),

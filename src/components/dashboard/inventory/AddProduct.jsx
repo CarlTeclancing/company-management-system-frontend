@@ -83,7 +83,11 @@ const AddProduct = ( {modal}) => {
       }
     }
   };
- 
+   const category = [
+    { label: 'Electronics', value: 'electronics' },
+    { label: 'Charger', value: 'charger' },
+    { label: 'Furniture', value: 'furniture' },
+  ];
 
  
 
@@ -91,12 +95,12 @@ const AddProduct = ( {modal}) => {
     <>
       <form className='form' onSubmit={handleSubmit}>
         
-        <h2>Create a Product</h2>
-        <p>Enter category information to create a new category</p>
+        <h2>Create a Product </h2>
+        <p>Enter Product information to create a new category</p>
 
         <div className="form-el-200">
           <InputField
-            label="Category Name"
+            label="Product Name"
             name="tile"
             type="text"
             value={form.title}
@@ -106,6 +110,47 @@ const AddProduct = ( {modal}) => {
           />
 
         </div>
+        <div className="form-el-100">
+          <DescriptionField
+            label="Category Description"
+            name="description"
+            value={form.description}
+            onChange={handleChange}
+            placeholder="Write a short description..."
+            error={errors.description}
+          />
+      </div>
+        <div className="form-el">
+          <InputField
+            label="Product Price"
+            name="tile"
+            type="number"
+            value={form.title}
+            onChange={handleChange}
+            placeholder="Exp 10.00"
+            error={errors.titile}
+          />
+          <InputField
+            label="Product Quantity"
+            name="tile"
+            type="number"
+            value={form.title}
+            onChange={handleChange}
+            placeholder="Enter quantity"
+            error={errors.titile}
+          />
+        </div>
+        <div className="form-el-100">
+          <DropdownField
+            label="Select category"
+            name="category"
+            value={form.role}
+            onChange={handleChange}
+            options={category}
+            error={errors.role}
+          />
+        </div>
+        
         
       <div className="row-flex-left">
         <Button value={loading ? 'Submitting...' : 'Create Product'} type={"btn-primary"}  />

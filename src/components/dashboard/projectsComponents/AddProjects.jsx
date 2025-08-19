@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DropdownField from '../../auth/DropDownField';
 import { useAuth } from '../../../contexts/AuthContext';
+import { BASE_URL } from '../../../../globals';
 //import { AppContext } from '../../../contexts/AppContext';
 
 const AddProjects = ( {modal}) => {
@@ -67,8 +68,8 @@ const AddProjects = ( {modal}) => {
   
       try {
         setLoading(true);
-  
-        await axios.post('http://localhost:5000/v1/api/projects/', {
+
+        await axios.post(`${BASE_URL}/projects`, {
           name,
           description,
           sdate,

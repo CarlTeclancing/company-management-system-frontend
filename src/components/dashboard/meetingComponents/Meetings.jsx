@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { MEETINGS } from '../../../../globals';
+import { BASE_URL } from '../../../../globals';
 import { useAuth } from '../../../contexts/AuthContext';
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ function Meeting() {
       const id = companyId;
     const getMeetingsById = async (id) => {
       try {
-        const response = await axios.get(`${MEETINGS}/${id}`);
+        const response = await axios.get(`${BASE_URL}/meetings/${id}`);
         setMeetings(response.data);
         console.log('Fetched Meetings:', response.data);
       } catch (error) {

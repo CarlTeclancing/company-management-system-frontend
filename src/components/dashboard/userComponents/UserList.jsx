@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 //user end point
-import { COMPANY } from '../../../../globals';
+import { BASE_URL } from '../../../../globals';
 
 function UserList() {
   const { users, setUsers } = useContext(AppContext);
@@ -26,7 +26,7 @@ function UserList() {
 
     const getUserById = async (id) => {
       try {
-        const response = await axios.get(`${COMPANY}/${id}`);
+        const response = await axios.get(`${BASE_URL}/users/${id}`);
         setUsers(response.data);
         console.log('Fetched users:', response.data);
       } catch (error) {

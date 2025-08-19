@@ -9,7 +9,7 @@ import { AppContext } from '../../../contexts/AppContext';
 import { useAuth } from '../../../contexts/AuthContext';
 
 //user end point 
-import { USERS } from '../../../../globals';
+import { BASE_URL } from '../../../../globals';
 
 const AddUser = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
@@ -80,7 +80,7 @@ const AddUser = ( {modal}) => {
 
       try {
         setLoading(true);
-        await axios.post(`${USERS}`, {
+        await axios.post(`${BASE_URL}/users`, {
           name,
           email,
           password,

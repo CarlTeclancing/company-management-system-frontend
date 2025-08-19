@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import InputField from '../../../components/auth/InputField';
-import Button from '../../../components/common/button';
+import InputField from '../../auth/InputField';
+import Button from '../../common/button';
 import logo from '../../../assets/images/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DropdownField from '../../auth/DropDownField';
 import { AppContext } from '../../../contexts/AppContext';
 import { useAuth } from '../../../contexts/AuthContext';
+import { BASE_URL } from '../../../../globals';
 
 const AddInvoice = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
@@ -77,7 +78,7 @@ const AddInvoice = ( {modal}) => {
 
       try {
         setLoading(true);
-        await axios.post('http://localhost:5000/v1/api/users/', {
+        await axios.post(`${BASE_URL}/invoices/1/invoice-items`, {
           name,
           email,
           password,

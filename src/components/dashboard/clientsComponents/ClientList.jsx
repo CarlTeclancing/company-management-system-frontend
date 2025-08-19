@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../../contexts/AuthContext';
 import axios from 'axios';
-import { CLIENTS } from '../../../../globals';
+import { BASE_URL } from '../../../../globals';
 
 const ClientList = () => {
 
@@ -24,7 +24,7 @@ const ClientList = () => {
      const id = companyId
       const getClients = async (id) => {
       try {
-        const response = await axios.get(`${CLIENTS}/${id}`);
+        const response = await axios.get(`${BASE_URL}/clients/${id}`);
         setClients(response.data);
         console.log('Fetched clients:', response.data);
       } catch (error) {

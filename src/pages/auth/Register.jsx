@@ -12,7 +12,7 @@ import { AppContext } from '../../contexts/AppContext';
 
 //importing the endpoint url
 
-import { REGISTER } from '../../../globals';
+import { BASE_URL } from '../../../globals';
 
 
 const Register = () => {
@@ -78,7 +78,7 @@ const Register = () => {
       
       try {
         setLoading(true);
-        await axios.post(`${REGISTER}`, {
+        await axios.post(`${BASE_URL}/auth/register`, {
           name,
           email,
           password,

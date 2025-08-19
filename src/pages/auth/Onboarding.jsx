@@ -9,7 +9,7 @@ import axios from 'axios';
 import { AppContext } from '../../contexts/AppContext';
 
 //endpoint url import
-import { COMPANY } from '../../../globals';
+import { BASE_URL } from '../../../globals';
 
 const Onboarding = () => {
 
@@ -53,7 +53,7 @@ const Onboarding = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         setLoading(true);
-        const response = await axios.post(`${COMPANY}`, form);
+        const response = await axios.post(`${BASE_URL}/company`, form);
         //console.log('Company created:', response.data);
 
         // Save to localStorage

@@ -11,7 +11,7 @@ function Invoice() {
     <Layout>
       <div className="row">
         <h1>Invoices</h1>
-        <AddButton value={"Add Task"} type={"btn-primary"}  onClick={()=>setActiveModal(true)}/>
+        <AddButton value={"Add Invoice"} type={"btn-primary"}  onClick={()=>setActiveModal(true)}/>
       </div>
               <Tabs tabData={[
             {
@@ -33,7 +33,6 @@ function Invoice() {
         <div className={activeModal == true ?"form-container-overlay":"none"}>
             <i className="bi bi-x" id='close' onClick={()=>setActiveModal(false)}></i>
             {activeModal== true? <AddInvoice modal={true}  />:""}
-
         </div>
     </Layout>
   )

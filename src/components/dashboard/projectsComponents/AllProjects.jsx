@@ -3,7 +3,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { AppContext } from '../../../contexts/AppContext';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { PROJECTS } from '../../../../globals';
+import { BASE_URL } from '../../../../globals';
 
 
 const AllProjects = () => {
@@ -17,7 +17,7 @@ const AllProjects = () => {
   useEffect(() => {
     const getCompaniesById = async (id) => {
       try {
-        const response = await axios.get(`${PROJECTS}/${id}`);
+        const response = await axios.get(`${BASE_URL}/projects/${id}`);
         setProjects(response.data);
       } catch (error) {
         console.error('Error fetching projects:', error.message);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { CLIENTS} from '../../../globals';
+import { BASE_URL} from '../../../globals';
 
 function DeleteClient() {
   const location = useLocation();
@@ -13,7 +13,7 @@ function DeleteClient() {
     const userId = client.id;
     const deleteUser = async (userId) => {
       try {
-        const response = await axios.delete(`${CLIENTS}/${userId}`)
+        const response = await axios.delete(`${BASE_URL}/clients/${userId}`)
         .then(res => {
             console.log('Deleted:', response.data);
     

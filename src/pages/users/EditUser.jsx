@@ -4,7 +4,7 @@ import Button from '../../components/common/button';
 import DropdownField from '../../components/auth/DropDownField';
 import Layout from '../../components/layout/Layout';
 import Tabs from '../../components/layout/Tabs';
-import { USERS } from '../../../globals';
+import { BASE_URL, USERS } from '../../../globals';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
@@ -83,7 +83,7 @@ const EditUser = ({ modal }) => {
 
     try {
       setLoading(true);
-      await axios.put(`${USERS}/${userId}`, {
+      await axios.put(`${BASE_URL}/users/${userId}`, {
         name: form.name,
         email: form.email,
         number: form.number,

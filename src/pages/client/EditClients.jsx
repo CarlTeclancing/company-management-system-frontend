@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
 
 //GET CLIENT API RUL
-import { CLIENTS } from '../../../globals';
+import { BASE_URL } from '../../../globals';
 import Layout from '../../components/layout/Layout';
 
 const EditClient = ( {modal}) => {
@@ -74,7 +74,7 @@ const EditClient = ( {modal}) => {
 
       try {
         setLoading(true);
-        await axios.put(`${CLIENTS}/${userId}`, {
+        await axios.put(`${BASE_URL}/clients/${userId}`, {
           name,
           email,
           number,

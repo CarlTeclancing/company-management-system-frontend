@@ -9,7 +9,7 @@ import { AppContext } from '../../../contexts/AppContext';
 import { useAuth } from '../../../contexts/AuthContext';
 
 //GET CLIENT API RUL
-import { CLIENTS } from '../../../../globals';
+import { BASE_URL } from '../../../../globals';
 
 const AddClient = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
@@ -61,7 +61,7 @@ const AddClient = ( {modal}) => {
 
       try {
         setLoading(true);
-        await axios.post(`${CLIENTS}`, {
+        await axios.post(`${BASE_URL}/clients`, {
           name,
           email,
           number,

@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DropdownField from '../../auth/DropDownField';
 import { useAuth } from '../../../contexts/AuthContext';
-import { MEETINGS } from '../../../../globals';
+import { BASE_URL } from '../../../../globals';
 //import { AppContext } from '../../../contexts/AppContext';
 
 
@@ -70,8 +70,8 @@ const AddMeetings = ( {modal}) => {
   
       try {
         setLoading(true);
-  
-        await axios.post(`${MEETINGS}`, {
+
+        await axios.post(`${BASE_URL}/meetings`, {
           title,
           date,
           startTime,

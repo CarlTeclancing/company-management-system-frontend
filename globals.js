@@ -7,11 +7,11 @@ const PROJECTS = import.meta.env.VITE_API_URL_PROJECTS;
 const MEETINGS = import.meta.env.VITE_API_URL_MEETINGS;
 const TASKS = import.meta.env.VITE_API_URL_TASKS;
 const CLIENTS = import.meta.env.VITE_API_URL_CLIENTS;
-
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export {
-    
-    LOGIN, 
+
+    LOGIN,
     REGISTER,
     USERS,
     COMPANY,
@@ -19,4 +19,5 @@ export {
     MEETINGS,
     TASKS,
     CLIENTS,
+    BASE_URL
 };

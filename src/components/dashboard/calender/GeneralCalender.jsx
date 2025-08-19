@@ -37,7 +37,7 @@ const Calendar = () => {
       ...formData
     };
     try {
-      await axios.post("http://localhost:5000/events", event);
+      await axios.post(`${BASE_URL}/events`, event);
       setEvents([...events, event]);
       setShowModal(false);
       setFormData({ title: "", description: "" });

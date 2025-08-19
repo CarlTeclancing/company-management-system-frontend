@@ -104,6 +104,17 @@ const AddCategory = ( {modal}) => {
             placeholder="Enter name"
             error={errors.titile}
           />
+        <div className="form-el-100">
+          <DescriptionField
+            label="Category Description"
+            name="description"
+            value={form.description}
+            onChange={handleChange}
+            placeholder="Write a short description..."
+            error={errors.description}
+          />
+      </div>
+        
 
         </div>
         
