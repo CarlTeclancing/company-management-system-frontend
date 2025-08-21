@@ -5,7 +5,7 @@ import InputField from '../auth/InputField';
 import DropdownField from '../auth/DropDownField';
 import Button from '../common/button';
 import { AppContext } from '../../contexts/AppContext';
-import { TASKS } from '../../../globals';
+import { BASE_URL } from '../../../globals';
 
 const AddTask = ({ modal }) => {
   const [modalValue, setModalValue] = useState(modal);
@@ -47,7 +47,7 @@ const AddTask = ({ modal }) => {
     if (Object.keys(newErrors).length === 0) {
       try {
         setLoading(true);
-        await axios.post(`${TASKS}`, {
+        await axios.post(`${BASE_URL}/tasks`, {
           title: form.title,
           description: form.description,
           priority: form.priority,

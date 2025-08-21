@@ -24,7 +24,7 @@ const ClientList = () => {
      const id = companyId
       const getClients = async (id) => {
       try {
-        const response = await axios.get(`${BASE_URL}/clients/${id}`);
+        const response = await axios.get(`${BASE_URL}/clients/company/${id}`);
         setClients(response.data);
         console.log('Fetched clients:', response.data);
       } catch (error) {

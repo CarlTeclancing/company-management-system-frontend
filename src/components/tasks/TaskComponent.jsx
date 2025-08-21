@@ -4,7 +4,7 @@ import pending from '../../assets/icons/notchecked.png';
 import inprogress from '../../assets/icons/progress.png';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { TASKS } from '../../../globals';
+import { BASE_URL } from '../../../globals';
 import { useAuth } from '../../contexts/AuthContext';
 
 function TaskComponent({ status }) {
@@ -18,7 +18,7 @@ function TaskComponent({ status }) {
   useEffect(() => {
     const getTaskById = async (id) => {
       try {
-        const response = await axios.get(`${TASKS}/${id}`);
+        const response = await axios.get(`${BASE_URL}/tasks/${id}`);
         setTasks(response.data);
         console.log('Fetched Task:', response.data);
       } catch (error) {

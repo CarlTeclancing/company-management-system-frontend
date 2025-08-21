@@ -26,7 +26,7 @@ function UserList() {
 
     const getUserById = async (id) => {
       try {
-        const response = await axios.get(`${BASE_URL}/users/${id}`);
+        const response = await axios.get(`${BASE_URL}/users/company/${id}`);
         setUsers(response.data);
         console.log('Fetched users:', response.data);
       } catch (error) {

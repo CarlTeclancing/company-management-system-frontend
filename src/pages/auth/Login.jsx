@@ -70,7 +70,7 @@ const Login = () => {
       try {
         setLoading(true);
         const response = await axios.post(
-          `${    BASE_URL}auth/login`,
+          `${    BASE_URL}/auth/login`,
           {
             email: form.email,
             password: form.password,
