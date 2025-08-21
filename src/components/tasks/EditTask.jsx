@@ -3,12 +3,12 @@ import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
 import InputField from '../auth/InputField';
 import DropdownField from '../auth/DropDownField';
-import Button from '../common/button';
+import Button from '../common/Button';
 import { AppContext } from '../../contexts/AppContext';
 import { TASKS } from '../../../globals';
 
-const EditTask = ({ modal }) => {
-  const [modalValue, setModalValue] = useState(modal);
+const EditTask = ({  }) => {
+  
   const { user, companyId } = useAuth();
   const { users } = useContext(AppContext);
 
