@@ -21,10 +21,10 @@ body{
   background-color: var(--bg-color);
   font-family: "Poppins", sans-serif;
   font-style: normal;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .chat-app {

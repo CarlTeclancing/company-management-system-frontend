@@ -10,7 +10,7 @@ function SideBar() {
   return (
     <div className='side-nav'>
         <div className="w-100">
-            <img src={logo} alt="" />
+            <img src={logo} className='logo' alt="" />
 
         </div>
 

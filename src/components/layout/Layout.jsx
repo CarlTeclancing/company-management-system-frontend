@@ -57,7 +57,7 @@ function Layout( {children}) {
   return (
     <div className='container'>
         <SideBar />
-        <div className="col">
+        <div className="col-main">
             <TopBar logout={logout}/>
             {children}
         </div>
