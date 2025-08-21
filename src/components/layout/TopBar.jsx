@@ -2,7 +2,7 @@ import React from 'react'
 import InputField from '../auth/InputField'
 import notificationIcon from '../../assets/icons/notification-icon.png'
 import userImg from '../../assets/icons/userImg.png'
-import Button from '../common/button'
+import Button from '../common/Button'
 function TopBar( {logout}) {
   return (
     <div className='top-nav'>
