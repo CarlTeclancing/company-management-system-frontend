@@ -26,7 +26,7 @@ import Inventory from "../pages/inventory/Inventory";
  const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Login />,
   },
   {
     path: '/login',
