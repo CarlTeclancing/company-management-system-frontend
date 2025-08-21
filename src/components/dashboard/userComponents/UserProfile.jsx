@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../common/button'
+import Button from '../../common/Button'
 import userImg from '../../../assets/images/user1.png'
 
 function UserProfile() {
