@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import InputField from '../../components/auth/InputField';
-import Button from '../../components/common/button';
+import Button from '../../components/common/Button';
 import logo from '../../assets/images/logo.svg';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';

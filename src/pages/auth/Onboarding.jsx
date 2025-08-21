@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import InputField from '../../components/auth/InputField';
 import DropdownField from '../../components/auth/DropDownField';
-import Button from '../../components/common/button';
+import Button from '../../components/common/Button';
 import logo from '../../assets/images/logo.svg';
 import './auth.css';
 import axios from 'axios';
