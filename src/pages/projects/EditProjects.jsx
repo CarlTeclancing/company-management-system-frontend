@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import InputField from '../../components/auth/InputField';
 import DropdownField from '../../components/auth/DropDownField';
-import Button from '../../components/common/button';
+import Button from '../../components/common/Button';
 import { useAuth } from '../../contexts/AuthContext';
 import Layout from '../../components/layout/Layout';
 import { BASE_URL } from '../../../globals';
