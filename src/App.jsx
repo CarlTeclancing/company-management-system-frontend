@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from './components/common/button'
+import Button from './components/common/Button';
 import AddButton from './components/common/AddButton'
 import Widget from './components/common/Widget'
 import FinancialOverview from './components/dashboard/FinancialOverview'
