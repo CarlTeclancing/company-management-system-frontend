@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import InputField from '../../components/auth/InputField';
 import './auth.css'
-import Button from '../../components/common/button';
+import Button from '../../components/common/Button';
 import logo from '../../assets/images/logo.svg'
 import { Link } from 'react-router-dom';
 
