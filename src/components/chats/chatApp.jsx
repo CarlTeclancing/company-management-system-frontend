@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './ChatApp.css';
+import './chatApp.css';
 import { useAuth } from '../../contexts/AuthContext';
 
 const socket = io('http://localhost:8000'); // No auth yet
