@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import InputField from '../../../components/auth/InputField';
-import Button from '../../../components/common/button';
+import Button from '../../../components/common/Button';
 import logo from '../../../assets/images/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
