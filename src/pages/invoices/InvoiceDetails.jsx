@@ -1,14 +1,17 @@
 import React from 'react'
 import Layout from '../../components/layout/Layout'
 import InputField from '../../components/auth/InputField'
+import "../dashboard/dashboard.css"
+import { useLocation } from 'react-router-dom';
 
 function InvoiceDetails() {
+    const location = useLocation();
+    const { state: invoice } = location || {};
     const [form, setForm] = React.useState({
         name: '',
-        clientName: '',
-        amount: '',
-        date: '',
-        dueDate: ''
+        quantity: '',
+        price: '',
+
     });
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,10 +24,9 @@ function InvoiceDetails() {
     const validateForm = () => {
         const newErrors = {};
         if (!form.name) newErrors.name = 'Invoice title is required';
-        if (!form.clientName) newErrors.clientName = 'Client name is required';
-        if (!form.amount) newErrors.amount = 'Invoice amount is required';
-        if (!form.date) newErrors.date = 'Invoice date is required';
-        if (!form.dueDate) newErrors.dueDate = 'Due date is required';
+        if (!form.price) newErrors.price = 'Invoice price is required';
+        if (!form.quantity) newErrors.quantity = 'Invoice quantity is required';
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -34,30 +36,36 @@ function InvoiceDetails() {
         <div className="row">
             <h1>Invoice Details</h1>
         </div>
-        <div className="col">
-            <div className="form-el-100">
-                <p>Invoice details will be displayed here.</p>
+        <div className="row-flex-row">
+            <div className="side-col">
+                <div className="form-el-100">
+                    <h3>Invoice Details</h3>
+                    <button className='btn-secondary'><i className="bi bi-download"></i>Download Invoice</button>
+                </div>
             </div>
-            <form className='form-100'>
-                <h3>Invoice Information</h3>
+            <div className="side-col">
+                <div className="form-el-100">
+                    <h3>Add Invoice Item</h3>
+                </div>
+                <form className='form-100' onSubmit={validateForm}>
                 <div className="form-el-200">
                     <InputField
-                        label="Invoice Title"
+                        label="Item Name"
                         name="name"
                         type="text"
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="Enter invoice title"
+                        placeholder="Enter item name"
                         error={errors.name}
                     />
                     <InputField
-                        label="Client Name"
-                        name="clientName"
-                        type="text"
-                        value={form.clientName}
+                        label="Item Quantity"
+                        name="quantity"
+                        type="number"
+                        value={form.quantity}
                         onChange={handleChange}
-                        placeholder="Enter client name"
-                        error={errors.clientName}
+                        placeholder="Enter item quantity"
+                        error={errors.quantity}
                     />
                     <InputField
                         label="Invoice Amount"
@@ -69,31 +77,13 @@ function InvoiceDetails() {
                         error={errors.amount}
                     />
                 </div>
-                <div className="form-el-200">
-                    <InputField
-                        label="Invoice Date"
-                        name="date"
-                        type="date"
-                        value={form.date}
-                        onChange={handleChange}
-                        placeholder="dd/mm/yyyy"
-                        error={errors.date}
-                    />
-                    <InputField
-                        label="Due Date"
-                        name="dueDate"
-                        type="date"
-                        value={form.dueDate}
-                        onChange={handleChange}
-                        placeholder="dd/mm/yyyy"
-                        error={errors.dueDate}
-                    />
-                </div>
+               
                 <div className="row-flex-left">
-                    <button type="submit" className="btn btn-primary">Save Invoice and Download pdf</button>
+                    <button type="submit" className="btn btn-primary">Add Item</button>
                 </div>
             </form>
 
+        </div>
         </div>
     </Layout>
   )

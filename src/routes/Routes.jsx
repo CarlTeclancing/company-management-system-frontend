@@ -113,7 +113,7 @@ import Inventory from "../pages/inventory/Inventory";
     element: <DeleteClient />,
   },
   {
-    path: '/invoices/ivoice-details/:id',
+    path: '/invoices/invoice-details/:id',
     element: <InvoiceDetails />,
   },
   {
@@ -123,4 +123,4 @@ import Inventory from "../pages/inventory/Inventory";
 ]);
 
 
-export default router
+export default router;

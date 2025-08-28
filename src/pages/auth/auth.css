@@ -19,9 +19,6 @@
     width: 0px;
 }
 
-.col::-webkit-scrollbar{
-    width: 0px;
-}
     
 .form h2{
     font-size: 32px;
@@ -30,7 +27,7 @@
 }
 .form-container{
     width: 100%;
-    height: auto;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,6 +39,7 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 12px;
+    
 }
 .form-el .input-field{
     width: 48%;
