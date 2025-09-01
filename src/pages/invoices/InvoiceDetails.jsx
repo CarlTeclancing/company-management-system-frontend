@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../../components/layout/Layout'
 import InputField from '../../components/auth/InputField'
 import "../dashboard/dashboard.css"
@@ -7,19 +7,21 @@ import axios from 'axios'
 import { BASE_URL } from '../../../globals'
 
 function InvoiceDetails() {
-  const location = useLocation()
-  const navigate = useNavigate()
-  const { state } = location
-  const invoice = state?.invoice[0]; // pick the first one
+  const [invoices, setInvoices] = useState([]);
+  const [itemsData, setItemsData] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { state } = location;
+  const { invoiceId } = state || {};
 
-  const [form, setForm] = React.useState({
+  const [form, setForm] = useState({
     name: '',
     quantity: '',
     price: '',
   })
 
-  const [errors, setErrors] = React.useState({})
-  const [loading, setLoading] = React.useState(false)
+  const [errors, setErrors] = useState({})
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -41,7 +43,7 @@ function InvoiceDetails() {
       setErrors(newErrors)
       return
     }
-    console.log(invoice.id)
+    console.log(invoiceId) 
 
     try {
       setLoading(true)
@@ -49,7 +51,7 @@ function InvoiceDetails() {
         name: form.name,
         quantity: form.quantity,
         price: form.price,
-        invoice_id: invoice?.id,
+        invoice_id: invoiceId,
       })
       setLoading(false)
 
@@ -74,6 +76,28 @@ function InvoiceDetails() {
     }
   }
 
+  useEffect(() => { 
+    if (invoiceId) {
+      // Fetch invoice details using invoiceId
+      const invoice_id = invoiceId;
+      const fetchInvoiceDetails = async () => {
+        try {
+          const response1 = await axios.get(`${BASE_URL}/invoices/${invoice_id}`)
+          const response2 = await axios.get(`${BASE_URL}/items/invoice/${invoice_id}`)
+          setInvoices([response1.data]);
+          setItemsData(response2.data);
+          console.log('Invoice details fetched successfully');
+          console.table(response1.data);  
+
+        } catch (error) {
+          console.error('Error fetching invoice details:', error);
+        }
+      }
+
+      fetchInvoiceDetails();
+    }
+  }, [invoiceId])
+
   return (
     <Layout>
       <div className="row">
@@ -85,6 +109,32 @@ function InvoiceDetails() {
             <h3>Invoice Details</h3>
             <i className="bi bi-download"></i>
           </div>
+          <div className="row">
+                {invoices.map((invoice) => (
+                  <div key={invoice.id}>
+                    <p><strong>Invoice ID:</strong> {invoice.id}</p>
+                    <p><strong>Customer Name:</strong> {invoice.title}</p>
+                    <p><strong>Invoice Date:</strong> {invoice.date}</p>
+                    <p><strong>Total Amount:</strong> {invoice.description}</p>
+                  </div>
+                ))}
+          </div>
+          <h3>Invoice Items</h3>
+          <div className="row">
+            {itemsData.map((item) => (
+              <div key={item.id}>
+                <p><strong>Item Name:</strong> {item.name}</p>
+                <p><strong>Item Quantity:</strong> {item.quantity}</p>
+                <p><strong>Item Price:</strong> {item.price}</p>
+              </div>
+            ))}
+          </div>
+          <h3>
+            Total 
+            <strong>
+              {": " + itemsData.reduce((acc, item) => acc + item.price * item.quantity, 0)}
+            </strong>
+        </h3>
         </div>
         <div className="side-col">
           <div className="form-el-100">

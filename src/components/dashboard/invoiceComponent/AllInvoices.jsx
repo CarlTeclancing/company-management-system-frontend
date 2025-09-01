@@ -54,7 +54,7 @@ function AllInvoices() {
                   <ul>
                     <Link 
                         to={`/invoices/invoice-details/${invoice.id}`}
-                        state={{ invoice }}
+                        state={{ invoiceId: invoice.id }}
                     >
 
                       <li><i className="bi bi-eye"></i> View</li>
