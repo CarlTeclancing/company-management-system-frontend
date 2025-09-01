@@ -27,8 +27,8 @@ function SideBar() {
         </Link>
         <Link 
             
-            className={location.pathname == "/" ?"side-link-active":"side-link"} 
-            to={'/dashboard'}
+            className={location.pathname == "/ai-chat" ?"side-link-active":"side-link"} 
+            to={'/ai-chat'}
             
             >
             <i class="bi bi-vignette"></i>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, addMonths, subMonths, isSameMonth, isSameDay } from "date-fns";
 import axios from "axios";
 import "./calender.css";
-import { MEETINGS } from "../../../../globals";
+import { BASE_URL, MEETINGS } from "../../../../globals";
 import { Link } from "react-router-dom";
 
 const Calendar = () => {

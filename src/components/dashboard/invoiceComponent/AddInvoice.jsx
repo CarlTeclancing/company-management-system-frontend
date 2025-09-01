@@ -101,7 +101,7 @@ const fetchClients = async () => {
 };
   useEffect(() => {
     fetchClients();
-  }, [fetchClients]);
+  }, [companyId]);
 
   return (
     <>

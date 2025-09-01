@@ -21,6 +21,8 @@ import EditClient from "../pages/client/EditClients";
 import DeleteClient from "../pages/client/DeleteClient";
 import InvoiceDetails from "../pages/invoices/InvoiceDetails";
 import Inventory from "../pages/inventory/Inventory";
+import AiChat from "../pages/ai/AiChat";
+import Test from "../pages/test/TestRoute";
 
 // Define your router configuration
  const router = createBrowserRouter([
@@ -119,6 +121,14 @@ import Inventory from "../pages/inventory/Inventory";
   {
     path: '/inventory',
     element: <Inventory />,
+  },
+  {
+    path: '/ai-chat',
+    element: <AiChat />,
+  },
+  {
+    path: '/test',
+    element: <Test />,
   },
 ]);
 
