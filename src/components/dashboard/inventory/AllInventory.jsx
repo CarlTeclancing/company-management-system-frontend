@@ -1,7 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../../contexts/AuthContext';
+import axios from 'axios';
+import { BASE_URL } from '../../../../globals';
 
 const AllInventory = () => {
+        const [inventoryData, setInventoryData] = useState([]);
+
+        //getting the company id from authcontext
+          const {
+            companyId,
+          } = useAuth();
+
+       useEffect(() => { 
+            if (companyId) {
+            // Fetch invoice details using invoiceId
+            const company_id = companyId;
+            const fetchInventoryData = async () => {
+                try {
+                const response = await axios.get(`${BASE_URL}/inventory/company/${company_id}`)
+                setInventoryData(response.data);
+                console.log(inventoryData);
+
+                } catch (error) {
+                console.error('Error fetching Inventory data:', error);
+                }
+            }
+
+            fetchInventoryData();
+            }
+        }, [companyId])
   return (
     <table>
         <thead>
@@ -18,28 +46,31 @@ const AllInventory = () => {
         <br /><br />
 
         <tbody>
+            {inventoryData.map((products) =>(
+
             <tr>
-                <td>22323</td>
-                <td>22323</td>
-                <td>22323</td>
-                <td>22323</td>
-                <td>22323</td>
-                <td>22323</td>
+                <td>{products.id}</td>
+                <td>{products.name}</td>
+                <td>{products.description}</td>
+                <td>{products.quantity}</td>
+                <td>{products.price}</td>
+                <td>{products.status}</td>
                 <td className='drop'>
                     <i className="bi bi-three-dots"></i>
                     <div className="drop-down">
                         <ul>
                             <Link>
                                 <li>
-                                    <i className="bi bi-eye"></i> View
+                                    <i className="bi bi-plus"></i>product
                                 </li>
                             </Link>
-                            <li><i className="bi bi-pencil-square"></i> Edit</li>
-                            <li><i className="bi bi-trash"></i> Delete</li>
+                            <li><i className="bi bi-subtract"></i> Product</li>
+                            <li><i className="bi bi-trash"></i>- Delete</li>
                         </ul>
                     </div>
                 </td>
             </tr>
+            ))}
         </tbody>
     </table>
   )

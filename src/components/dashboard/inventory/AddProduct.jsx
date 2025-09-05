@@ -8,9 +8,11 @@ import DropdownField from '../../auth/DropDownField';
 import { AppContext } from '../../../contexts/AppContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import DescriptionField from '../../auth/Description';
+import { BASE_URL } from '../../../../globals';
 
 const AddProduct = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
+    const [categoryData, setCategoryData] = useState([]);
 
     //getting the company id from authcontext
       const {
@@ -20,8 +22,6 @@ const AddProduct = ( {modal}) => {
         isLoggedIn,
         setIsLoggedIn
       } = useAuth();
-
-      console.log('User:', user);
 
   const [form, setForm] = useState({
     title: '',
@@ -46,35 +46,46 @@ const AddProduct = ( {modal}) => {
 
     const newErrors = {};
 
-    if (!form.title) newErrors.title = 'Title is required';
+    if (!form.name) newErrors.name = 'Name is required';
     if (!form.description) newErrors.description = 'Description is required';
+    if (!form.price) newErrors.price = 'Price is required';
+    if (!form.quantity) newErrors.quantity = 'Quantity is required';
+    if (!form.category) newErrors.category = 'Category is required';
+
   
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      const { title, description } = form;
+      const { name, description, price, quantity, category } = form;
 
       try {
         setLoading(true);
-        await axios.post('http://localhost:5000/v1/api/users/', {
-          title,
+        await axios.post(`${BASE_URL}/inventory`, {
+          name,
           description,
-          user_id: parseInt(user?.id),
-          companyId,
+          price,
+          quantity,
+          category,
+          status:"active",
+          createdBy: parseInt(user?.id),
+          company_id: companyId,
         });
         setLoading(false);
               // Reset the form after successful submission
       setForm({
-        title: '',
+        name: '',
         description: '',
+        price: '',
+        quantity: '',
+        category: '',
 
       });
 
       // clear errors too
       setErrors({});
         
-        navigate('/users'); // ✅ correct redirect
+        navigate('/inventory'); // ✅ correct redirect
       } catch (err) {
         setLoading(false);
         console.error('Error:', err.response?.data || err.message);
@@ -83,14 +94,30 @@ const AddProduct = ( {modal}) => {
       }
     }
   };
-   const category = [
-    { label: 'Electronics', value: 'electronics' },
-    { label: 'Charger', value: 'charger' },
-    { label: 'Furniture', value: 'furniture' },
-  ];
 
+   useEffect(() => { 
+    if (companyId) {
+      // Fetch invoice details using invoiceId
+      const company_id = companyId;
+      const fetchCompanyCategories = async () => {
+        try {
+          const response = await axios.get(`${BASE_URL}/category/company/${company_id}`)
+          setCategoryData(response.data);
+          console.log('Category fetched successfully');
+
+        } catch (error) {
+          console.error('Error fetching category details:', error);
+        }
+      }
+
+      fetchCompanyCategories();
+    }
+  }, [companyId])
  
-
+const category = categoryData.map((cat) => ({
+    label: cat.name,
+    value: user.id,
+  }));
   return (
     <>
       <form className='form' onSubmit={handleSubmit}>
@@ -101,12 +128,12 @@ const AddProduct = ( {modal}) => {
         <div className="form-el-200">
           <InputField
             label="Product Name"
-            name="tile"
+            name="name"
             type="text"
-            value={form.title}
+            value={form.name}
             onChange={handleChange}
             placeholder="Enter name"
-            error={errors.titile}
+            error={errors.name}
           />
 
         </div>
@@ -123,31 +150,31 @@ const AddProduct = ( {modal}) => {
         <div className="form-el">
           <InputField
             label="Product Price"
-            name="tile"
+            name="price"
             type="number"
-            value={form.title}
+            value={form.price}
             onChange={handleChange}
             placeholder="Exp 10.00"
-            error={errors.titile}
+            error={errors.price}
           />
           <InputField
             label="Product Quantity"
-            name="tile"
+            name="quantity"
             type="number"
-            value={form.title}
+            value={form.quantiy}
             onChange={handleChange}
             placeholder="Enter quantity"
-            error={errors.titile}
+            error={errors.quantiy}
           />
         </div>
         <div className="form-el-100">
           <DropdownField
             label="Select category"
             name="category"
-            value={form.role}
+            value={form.category}
             onChange={handleChange}
             options={category}
-            error={errors.role}
+            error={errors.category}
           />
         </div>
         

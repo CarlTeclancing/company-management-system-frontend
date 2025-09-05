@@ -8,6 +8,7 @@ import DropdownField from '../../auth/DropDownField';
 import { AppContext } from '../../../contexts/AppContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import DescriptionField from '../../auth/Description';
+import { BASE_URL } from '../../../../globals';
 
 const AddCategory = ( {modal}) => {
     const [modalValue, setModalValue] = useState(modal);
@@ -24,7 +25,7 @@ const AddCategory = ( {modal}) => {
       console.log('User:', user);
 
   const [form, setForm] = useState({
-    title: '',
+    name: '',
     description: '',
 
   });
@@ -46,27 +47,26 @@ const AddCategory = ( {modal}) => {
 
     const newErrors = {};
 
-    if (!form.title) newErrors.title = 'Title is required';
+    if (!form.name) newErrors.name = 'Name is required';
     if (!form.description) newErrors.description = 'Description is required';
   
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      const { title, description } = form;
+      const { name, description } = form;
 
       try {
         setLoading(true);
-        await axios.post('http://localhost:5000/v1/api/users/', {
-          title,
-          description,
-          user_id: parseInt(user?.id),
-          companyId,
+        await axios.post(`${BASE_URL}/category`, {
+          name,
+          description, 
+          company_id: companyId,
         });
         setLoading(false);
               // Reset the form after successful submission
       setForm({
-        title: '',
+        name: '',
         description: '',
 
       });
@@ -74,7 +74,7 @@ const AddCategory = ( {modal}) => {
       // clear errors too
       setErrors({});
         
-        navigate('/users'); // ✅ correct redirect
+        navigate('/inventory'); // ✅ correct redirect
       } catch (err) {
         setLoading(false);
         console.error('Error:', err.response?.data || err.message);
@@ -97,12 +97,12 @@ const AddCategory = ( {modal}) => {
         <div className="form-el-200">
           <InputField
             label="Category Name"
-            name="tile"
+            name="name"
             type="text"
-            value={form.title}
+            value={form.name}
             onChange={handleChange}
             placeholder="Enter name"
-            error={errors.titile}
+            error={errors.name}
           />
         <div className="form-el-100">
           <DescriptionField
@@ -114,7 +114,7 @@ const AddCategory = ( {modal}) => {
             error={errors.description}
           />
       </div>
-        
+            
 
         </div>
         
