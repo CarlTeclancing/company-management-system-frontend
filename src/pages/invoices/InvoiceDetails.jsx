@@ -6,13 +6,21 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { BASE_URL } from '../../../globals'
 
+//adding react-to-pdf
+//import { usePDF } from "react-to-pdf";
+
 function InvoiceDetails() {
   const [invoices, setInvoices] = useState([]);
   const [itemsData, setItemsData] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
   const { state } = location;
-  const { invoiceId } = state || {};
+  const { invoiceId, invoiceTitle, invoiceDescription, invoiceDate } = state || {};
+
+  //react-to-pdf dowload hook
+  //   const { toPDF, targetRef } = usePDF({
+  //   filename: "simple-receipt.pdf",
+  // });
 
   const [form, setForm] = useState({
     name: '',
@@ -87,7 +95,6 @@ function InvoiceDetails() {
           setInvoices([response1.data]);
           setItemsData(response2.data);
           console.log('Invoice details fetched successfully');
-          console.table(response1.data);  
 
         } catch (error) {
           console.error('Error fetching invoice details:', error);
@@ -107,26 +114,35 @@ function InvoiceDetails() {
         <div className="side-col">
           <div className="form-el-100">
             <h3>Invoice Details</h3>
-            <i className="bi bi-download"></i>
+            <button><i className="bi bi-download"></i></button>
+            
           </div>
           <div className="row">
                 {invoices.map((invoice) => (
                   <div key={invoice.id}>
-                    <p><strong>Invoice ID:</strong> {invoice.id}</p>
-                    <p><strong>Customer Name:</strong> {invoice.title}</p>
-                    <p><strong>Invoice Date:</strong> {invoice.date}</p>
-                    <p><strong>Total Amount:</strong> {invoice.description}</p>
+                    <p><strong>Invoice ID:</strong> {invoiceId}</p>
+                    <p><strong>Customer Name:</strong> {invoiceTitle}</p>
+                    <p><strong>Invoice Date:</strong> {invoiceDate}</p>
+                    <p><strong>Invice Description:</strong> {invoiceDescription}</p>
                   </div>
                 ))}
           </div>
+          <hr />
           <h3>Invoice Items</h3>
-          <div className="row">
+          <div className="row-flex">
             {itemsData.map((item) => (
               <div key={item.id}>
+                <div className="form-el-100">
+
+                <i class='bi bi-pen'></i>
+                <i class='bi bi-trash'></i>
+                </div>
                 <p><strong>Item Name:</strong> {item.name}</p>
                 <p><strong>Item Quantity:</strong> {item.quantity}</p>
                 <p><strong>Item Price:</strong> {item.price}</p>
+                <hr />
               </div>
+
             ))}
           </div>
           <h3>
