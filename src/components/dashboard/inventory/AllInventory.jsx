@@ -36,7 +36,7 @@ const AllInventory = () => {
             <tr>
                 <th>id</th>
                 <th>Name</th>
-                <th>Category</th>
+                <th>Description</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Status</th>
@@ -59,13 +59,20 @@ const AllInventory = () => {
                     <i className="bi bi-three-dots"></i>
                     <div className="drop-down">
                         <ul>
-                            <Link>
+                            <Link to={`/inventory/add-single/${products.id}`} state={{productsId:products.id, productsName:products.name, productDesc: products.description, productPrice:products.price, productQuantity:products.quantity}}>
                                 <li>
-                                    <i className="bi bi-plus"></i>product
+                                    <i className="bi bi-arrow-right-short"></i>+ Product 
                                 </li>
                             </Link>
-                            <li><i className="bi bi-subtract"></i> Product</li>
-                            <li><i className="bi bi-trash"></i>- Delete</li>
+                            <Link to={`/inventory/subtract-single/${products.id}`} state={{productsId:products.id, productsName:products.name, productDesc: products.description, productPrice:products.price, productQuantity:products.quantity}}>
+                                <li><i className="bi bi-arrow-right-short"></i>- Product</li>
+                            </Link>
+                            <Link to={`/inventory/edit-product/${products.id}`} state={{productsId:products.id, productsName:products.name, productDesc: products.description, productPrice:products.price, productQuantity:products.quantity}}>
+                                <li><i className="bi bi-arrow-right-short"></i>Edit</li>
+                            </Link>
+                            <Link to={`/inventory/delete/${products.id}`} state={{productId:products.id}}>
+                                <li><i className="bi bi-arrow-right-short"></i>Delete</li>
+                            </Link>
                         </ul>
                     </div>
                 </td>

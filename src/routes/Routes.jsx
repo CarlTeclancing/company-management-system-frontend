@@ -23,6 +23,10 @@ import InvoiceDetails from "../pages/invoices/InvoiceDetails";
 import Inventory from "../pages/inventory/Inventory";
 import AiChat from "../pages/ai/AiChat";
 import Test from "../pages/test/TestRoute";
+import AddProductQuantity from "../components/dashboard/inventory/AddProductQuantity";
+import SubtractProductQuantity from "../components/dashboard/inventory/SubtractProductQuantity";
+import EditProduct from "../components/dashboard/inventory/EditProduct";
+import Finance from "../pages/finance/Finance";
 
 // Define your router configuration
  const router = createBrowserRouter([
@@ -129,6 +133,22 @@ import Test from "../pages/test/TestRoute";
   {
     path: '/test',
     element: <Test />,
+  },
+  {
+    path: '/inventory/add-single/:id',
+    element: <AddProductQuantity />,
+  },
+  {
+    path: '/inventory/subtract-single/:id',
+    element: <SubtractProductQuantity />,
+  },
+  {
+    path: '/inventory/edit-product/:id',
+    element: <EditProduct />,
+  },
+  {
+    path: '/finance',
+    element: <Finance />,
   },
 ]);
 

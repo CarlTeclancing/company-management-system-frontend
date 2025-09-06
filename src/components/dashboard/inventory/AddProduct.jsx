@@ -67,7 +67,7 @@ const AddProduct = ( {modal}) => {
           price,
           quantity,
           category,
-          status:"active",
+          status:"In Stock",
           createdBy: parseInt(user?.id),
           company_id: companyId,
         });
