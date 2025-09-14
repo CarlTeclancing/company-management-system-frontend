@@ -27,6 +27,7 @@ import AddProductQuantity from "../components/dashboard/inventory/AddProductQuan
 import SubtractProductQuantity from "../components/dashboard/inventory/SubtractProductQuantity";
 import EditProduct from "../components/dashboard/inventory/EditProduct";
 import Finance from "../pages/finance/Finance";
+import KanbanBoard from "../components/kabanboard/TestTask";
 
 // Define your router configuration
  const router = createBrowserRouter([
@@ -149,6 +150,10 @@ import Finance from "../pages/finance/Finance";
   {
     path: '/finance',
     element: <Finance />,
+  },
+  {
+    path: '/task-board',
+    element: <KanbanBoard />,
   },
 ]);
 

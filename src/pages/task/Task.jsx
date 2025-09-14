@@ -5,6 +5,9 @@ import RecentTask from '../../components/tasks/RecentTask';
 import TaskComponent from '../../components/tasks/TaskComponent';
 import AddTask from '../../components/tasks/AddTask';
 import Tabs from '../../components/layout/Tabs';
+import KanbanColumn from '../../components/tasks/KanbanColumn';
+import KanbanTaskCard from '../../components/tasks/KanbanTaskCard';
+import KanbanBoard from '../../components/tasks/KanbanBoard';
 
 const Task = () => {
 
@@ -39,8 +42,8 @@ const Task = () => {
 
           <br /><br />
           <h2>All Task</h2><br />
-          <TaskComponent />
-
+         <KanbanBoard />
+ 
         
         <div className={activeModal == true ?"form-container-overlay":"none"}>
             <i className="bi bi-x" id='close' onClick={()=>setActiveModal(false)}></i>

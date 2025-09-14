@@ -25,12 +25,12 @@ export default function ChatApp() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [channelRes, userRes] = await Promise.all([
+                const [channelRes] = await Promise.all([
                     axios.get('http://localhost:8000/api/channels'),
-                    axios.get('http://localhost:8000/api/users')
+                    //axios.get('http://localhost:8000/api/users')
                 ]);
                 setChannels(channelRes.data);
-                setUsers(userRes.data);
+                //setUsers(userRes.data);
             } catch (err) {
                 console.error('Error loading channels or users', err);
                 toast.error('Failed to load chat data.');

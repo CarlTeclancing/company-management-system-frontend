@@ -1,0 +1,36 @@
+.board {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.column {
+  background: #f3f4f6;
+  padding: 15px;
+  border-radius: 12px;
+  width: 250px;
+  min-height: 300px;
+}
+
+.column-title {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.task {
+  background: #ffffff;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  transition: background 0.2s ease;
+}
+
+.task:hover {
+  background: #f9fafb;
+}
+
+.task-dragging {
+  background: #d1d5db;
+}

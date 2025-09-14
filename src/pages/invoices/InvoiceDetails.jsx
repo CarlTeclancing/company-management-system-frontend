@@ -21,7 +21,7 @@ function InvoiceDetails() {
   //   const { toPDF, targetRef } = usePDF({
   //   filename: "simple-receipt.pdf",
   // });
-
+ 
   const [form, setForm] = useState({
     name: '',
     quantity: '',

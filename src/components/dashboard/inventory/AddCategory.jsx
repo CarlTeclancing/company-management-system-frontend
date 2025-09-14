@@ -22,8 +22,6 @@ const AddCategory = ( {modal}) => {
         setIsLoggedIn
       } = useAuth();
 
-      console.log('User:', user);
-
   const [form, setForm] = useState({
     name: '',
     description: '',

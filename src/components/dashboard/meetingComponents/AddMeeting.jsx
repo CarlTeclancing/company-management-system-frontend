@@ -206,7 +206,7 @@ const AddMeetings = ( {modal}) => {
 
 
     <div className="row-flex-left">
-        <Button value={loading ? 'Submitting...' : 'Create Project'} type={"btn-primary"} />
+        <Button value={loading ? 'Submitting...' : 'Create Meeting'} type={"btn-primary"} />
 
     </div>
 
