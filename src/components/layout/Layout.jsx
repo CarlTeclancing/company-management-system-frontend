@@ -77,7 +77,7 @@ function Layout( {children}) {
         textAlign: "center", 
         padding: "20px" 
       }}>
-        <h2>Please use a desktop for the best experience</h2>
+        <h2>Please use a desktop for the best experience </br> Our Mobile App is comming soon..... </h2>
       </div>
     );
   }
