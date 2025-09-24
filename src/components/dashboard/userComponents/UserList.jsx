@@ -41,7 +41,7 @@ function UserList() {
   }, [user, companyId, setUsers]);
 
   if (isLoading) return <p>Loading users... (Check console for debug)</p>;
-  if (errorFetching) return <p>Error fetching users: {errorFetching}</p>;
+  if (errorFetching) return <p>No users for now try adding...</p>;
   if (!users || users.length === 0) return <p>No users found for this company.</p>;
 
   return (

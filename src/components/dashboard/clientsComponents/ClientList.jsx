@@ -40,7 +40,7 @@ const ClientList = () => {
   }, [companyId])
 
   if(isLoading === true) return <p>Feting data .......</p>
-  if(errorFetching === true) return <p>Hey 😉 Error Fetching data!</p>
+  if(errorFetching === true) return <p>Hey 😉 No data for now try adding!</p>
   return (
    <table>
   <thead>
