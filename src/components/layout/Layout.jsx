@@ -1,10 +1,22 @@
-import React, { Children, useEffect } from 'react'
+import React, { Children, useState, useEffect } from 'react'
 import SideBar from './SideBar'
 import TopBar from './TopBar'
 import { useAuth } from '../../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
 
 function Layout( {children}) {
+    const [isMobile, setIsMobile] = useState(false);
+  
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 1024); // treat <1024px as mobile/tablet
+      };
+  
+      handleResize(); // check on first load
+      window.addEventListener("resize", handleResize);
+  
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
   const navigate = useNavigate(); // Hook to navigate programmatically
   const {
@@ -53,6 +65,23 @@ function Layout( {children}) {
     setUser(null);
     setIsLoggedIn(false);
     navigate('/login');
+  }
+
+      if (isMobile) {
+    return (
+      <div style={{ 
+        display: "flex", 
+        flexDirection: "column",
+        height: "100vh", 
+        justifyContent: "center", 
+        alignItems: "center", 
+        textAlign: "center", 
+        padding: "20px" 
+      }}>
+        <h2>Please use a desktop for the best experience  </h2>
+        <p>Our Mobile App is comming soon.....</p>
+      </div>
+    );
   }
   return (
     <div className='container'>

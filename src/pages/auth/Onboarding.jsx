@@ -12,6 +12,18 @@ import { AppContext } from '../../contexts/AppContext';
 import { BASE_URL } from '../../../globals';
 
 const Onboarding = () => {
+        const [isMobile, setIsMobile] = useState(false);
+  
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 1024); // treat <1024px as mobile/tablet
+      };
+  
+      handleResize(); // check on first load
+      window.addEventListener("resize", handleResize);
+  
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
   const {companyData, setCompanyData} = React.useContext(AppContext);
 
@@ -85,7 +97,20 @@ const Onboarding = () => {
     { label: 'I am not a company', value: 'user' },
     { label: 'Guest', value: 'guest' },
   ];
-
+    if (isMobile) {
+    return (
+      <div style={{ 
+        display: "flex", 
+        height: "100vh", 
+        justifyContent: "center", 
+        alignItems: "center", 
+        textAlign: "center", 
+        padding: "20px" 
+      }}>
+        <h2>Please use a desktop for the best experience</h2>
+      </div>
+    );
+  }
   return (
     <div className="form-container">
       <form className="form" onSubmit={handleSubmit}>
